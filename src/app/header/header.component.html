@@ -1,0 +1,40 @@
+
+<nav class="bg-light" >
+    <div class="header">
+
+        <fa-icon [icon]="faBars" (click)="show()" class="sideBar"></fa-icon>
+        <img src="../assets/logo.png" alt="logo" width="40%">
+    </div>
+
+    <div class="bar-container">
+
+        <div class="bar"  *ngIf="sideBar">
+            <ul class="bar">
+                <li routerLink="">
+                    Main
+                </li>
+                <li routerLink="signup" (click)="!sideBar">
+
+                    sign Up
+                </li>
+                
+                <li routerLink="signin">
+
+                    sign In
+                </li>
+
+        
+            </ul>
+        
+        </div>
+        <div (click)="closeSideBare()" class="right-side">
+    
+        
+        </div>
+    
+    
+    </div>
+    
+   
+</nav>
+

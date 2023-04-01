@@ -1,0 +1,25 @@
+.form {
+    border: 2px solid #F8F9FA;
+    margin: 10% 10%;
+    padding: 10px 20px ;
+    
+  }
+
+
+
+.title{
+    text-align: center;
+    font-family: snas-serif;
+    font-weight: 700;
+  }
+
+ .submit{
+  margin: 0 auto;
+  
+ } 
+
+  mat-form-field{
+    margin: 0.3em;
+
+    
+  }

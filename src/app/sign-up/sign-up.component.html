@@ -1,0 +1,44 @@
+
+
+<!-- <form (ngSubmit)="signup(data.value)"  #data = "ngForm" class="form">
+    
+    <label>Username</label>
+    <input type="email" ngModel>
+    <label>password</label>
+    <input type="password" ngModel>
+
+
+</form> -->
+<form class="form-group" (ngSubmit)="signup(data.value)"  #data = "ngForm" class="form" >
+        <p class="title">Create an account</p>
+        <mat-form-field appearance="legacy" class="form-control"  >
+            <mat-label>Username</mat-label>
+            <input matInput name="username" ngModel> 
+        </mat-form-field>
+    <mat-form-field  class="form-control" appearance="legacy">
+            <mat-label>Email</mat-label>
+            <input matInput name="email" ngModel>
+        </mat-form-field>
+
+        
+    <mat-form-field class="form-control">
+                <mat-label>Phone number</mat-label>
+                <input matInput name="phone_number" ngModel></mat-form-field>
+    <mat-form-field class="form-control" appearance="standard">
+                    <mat-label>Password</mat-label>
+                    <input matInput name="password" type="password" ngModel>
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="submit" type="submit" >Create Account</button>
+          
+    
+
+                
+    
+          
+        
+    
+    </form>
+    
+    
+
+
