@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-// import {MatFormFieldModule} from '@angular/material/form-field';
+
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'
 import {MatButtonModule} from '@angular/material/button';
@@ -19,6 +19,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { MainComponent } from './main/main.component';
 import{MatCardModule} from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDivider, MatDividerModule} from '@angular/material/divider';
+import { AdminComponent } from './admin/admin.component';
+import { DoctorComponent } from './doctor/doctor.component';
+import { CountUpDirective } from './count-up.directive';
+import { CountUpModule } from 'ngx-countup';
+
 
 
 
@@ -29,7 +35,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     SigninComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
+    MainComponent,
+    AdminComponent,
+    DoctorComponent,
+    CountUpDirective
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
      MatButtonModule,
      MatButtonModule,
      MatCardModule,
-     MatSidenavModule
+     MatSidenavModule,
+     MatDividerModule,
+     MatIconModule,
+     CountUpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Breakpoints } from '@angular/cdk/layout'; 
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { CommunService } from '../services/commun.service';
+
 
 
 
@@ -9,20 +13,29 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+   
+
   faBars=faBars;
-  sideBar:Boolean=false;
+  sideBar:boolean=false;
 
   show(){
     this.sideBar=!this.sideBar
-    console.log(this.sideBar)
+      this.commun.showSideBar.next(this.sideBar)
   }
 
-  closeSideBare(){
-    this.sideBar=false;
-  }
-  constructor() { }
+  
+  constructor(private responsive: BreakpointObserver, private commun: CommunService) { }
 
+  
   ngOnInit(): void {
+    // this.responsive.observe([Breakpoints.Small
+    // , Breakpoints.Web
+    // ]).subscribe(result=>{
+    //   console.log(result)
+      
+    // })
   }
+  
 
+  
 }

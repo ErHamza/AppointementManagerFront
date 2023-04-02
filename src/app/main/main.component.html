@@ -1,37 +1,44 @@
-<div class="container">
+<div  [ngClass]="{'web-container' : webview, 'container': !webview}">
 
-    <div class="left-side">
+    <div [ngClass]="{'web-left-side' : webview, 'left-side': !webview}">
         
-        <p class="text1">Make An Appointement with the best doctors accross the country
-             just from your mobile</p>
-           <div class="sub-title">
+        <p class="text1">Make An Appointement with the best 
+        doctors accross the country just  
+        from your mobile  </p>
+
+          
+             <div class="sub-title">
     
             <p class="text2">Postpone or Cancel your Appointement at any time</p>
            </div> 
 
         <div class="buttons">
-            <button  mat-stroked-button color="primary"><a routerLink="signup">signup for free</a></button>  
-            <button mat-stroked-button color="pink"><a routerLink="#" style="color:green">See doctors List</a></button>
+            <button  mat-stroked-button ><a routerLink="signup" style="color: green;">signup for free</a></button>  
+            <button mat-stroked-button color="pink"><a routerLink="#" style="color:rgba(98, 178, 205, 0.991)">See doctors List</a></button>
             
 
         </div>   
+
       
         
     </div>
-    <!-- <img src="../assets/doctor.jpg"> -->
+    
 
-    <mat-card class="mycard">
+
+
+          <mat-card  [ngClass]="{'web-mycard' : webview, 'mycard': !webview}" >
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>Karim El Wardi</mat-card-title>
           <mat-card-subtitle>Dermatalogue</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="../assets/doctor.jpg" alt="Photo of karim el wardi">
+        <img mat-card-image src="../assets/doctor.jpg" alt="Photo of karim el wardi" height="350px">
         <mat-card-content>
-        <ul>
-            <li>10 years experience</li>
-            <li>More the 2000 patients</li>
-            <li>Good price</li>
+        <ul class="doc-features">
+          <li>Good price</li>
+          <li>+<span [countUp]="1000" [options]="{ enableScrollSpy: true }">0</span> patients</li>
+            <li>+<span [countUp]="10" [options]="{ enableScrollSpy: true }">0</span> years experience</li>
+            <li>100% patients  satedfied</li>
         </ul>
             
           
@@ -41,13 +48,25 @@
           
         </mat-card-actions>
       </mat-card>
-      
-
-
    
 </div>
 
-<div>
-    <p>How this works</p>
+<br>
+        
+<mat-divider></mat-divider>
+<div class="how-works">
+    <h3 class="title">How this works</h3>
+
+    <ul>
+      <li><p><fa-icon [icon]="fa1"></fa-icon>  Create an account</p></li>
+      <li><p><fa-icon [icon]="fa2"></fa-icon>  Select speciality</p></li>
+      <li><p><fa-icon [icon]="fa3"></fa-icon>  chose a doctor</p></li>
+      <li><p><fa-icon [icon]="fa4"></fa-icon>  chose a date</p></li>
+    </ul> 
+
+  
+    
     
 </div>
+<br>
+<br>

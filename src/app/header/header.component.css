@@ -4,12 +4,13 @@
     
 }
 .navbar{
-    height: 1.4em;
+    height: 1.6em;
 }
 
 .sideBar{
     cursor: pointer;
     font-size: 2em;
+    margin-left: 1em;
 }
 
 /* ul{
@@ -36,8 +37,9 @@
     justify-items: center; 
     width: 100%;
     height: 100vh;
-    background-color: aliceblue;
+    background-color: rgb(198, 205, 212);
     gap: 0.750em;
+
     /* box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.5); */
     /* box-shadow: 0 0 10px 1px #000 */
 }
@@ -56,6 +58,7 @@
     
     
 }
+
 li{
     padding: 15px;
     list-style: none;
@@ -69,5 +72,9 @@ li{
     
 }
 
+
+.logo{
+    margin-left: 6em;
+}
 
 

@@ -3,3 +3,57 @@
     padding: 0;
     
 }
+
+
+
+.container{
+    width: 100%;
+    
+    position: relative;
+
+}
+
+
+
+.grid{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    
+
+
+    
+}
+
+
+.bar{
+    position: absolute;
+    z-index: 100;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center; 
+    width: 40vw;
+    height: 100%;
+    background-color: #9096DE;
+    gap: 0.750em;
+    
+}
+
+
+
+li{
+    padding: 15px;
+    font-weight: 500;
+    list-style: none;
+    font-size: large;
+    text-decoration: none;
+    cursor: pointer;
+    color:rgb(45, 35, 32);
+    font-family: Times New Roman;
+    color: rgb(3, 5, 3);
+    
+}
