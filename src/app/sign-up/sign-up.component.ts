@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Patient } from '../models/patient.model';
 import { AuthService } from '../services/auth.service';
@@ -10,15 +10,37 @@ import { AuthService } from '../services/auth.service';
 })
 export class SignUpComponent implements OnInit {
 
+  @ViewChild("form") form! : ElementRef;
+  selectedFiles?: FileList;
+  currentFile?:File;
   constructor(private auth :AuthService) { }
 
   ngOnInit(): void {
   }
 
+  
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
   signup(data:Patient){
-    console.log(data)
-    this.auth.signup(data).subscribe();    
-    console.log(this.auth.UserData.subscribe())
+    if(this.selectedFiles ){
+      const file: File | null = this.selectedFiles.item(0);
+      
+      if(file)
+      {
+        this.currentFile=file;
+        this.auth.signup(data , this.currentFile).subscribe(res=>{
+          console.log(res) 
+
+        })
+        
+      }
+   
+    }
+    
+   
+    
   }
 
 }

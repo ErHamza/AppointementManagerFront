@@ -1,0 +1,30 @@
+.admin-container{
+    display: grid;
+    grid-template-columns: 12% 83%;
+        column-gap: 5%;
+}
+
+
+.sidebar{
+
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    font-family: sans-serif;
+    background: linear-gradient(0deg, rgb(111, 111, 209), #90EE90 90% );
+    border:1px solid blak;
+
+}
+.sidebar-list{
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+li{
+    margin-top: 2em;
+    cursor: pointer;
+    list-style: none;
+}

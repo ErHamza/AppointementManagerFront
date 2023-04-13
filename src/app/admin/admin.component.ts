@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() { }
+user!:User | null;
+  constructor(private auth:AuthService) { }
 
   ngOnInit(): void {
+ 
+
+ 
+  
   }
+
+
+
 
 }

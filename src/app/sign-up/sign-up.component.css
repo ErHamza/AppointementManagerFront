@@ -1,11 +1,13 @@
 .form {
     border: 2px solid #F8F9FA;
-    margin: 10% 10%;
+    margin: 0 10%;
     padding: 10px 20px ;
     
   }
 
-
+.form-group{
+  margin: 10% 10%;
+}
 
 .title{
     text-align: center;

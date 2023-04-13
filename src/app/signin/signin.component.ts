@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { audit } from 'rxjs';
+import { audit, pipe, take } from 'rxjs';
 import { LoginForm } from '../models/loginForm.model';
 
 import { AuthService } from '../services/auth.service';
@@ -16,9 +16,10 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
   }
 
-login(data:any){
-  const loginForm : LoginForm= new LoginForm(data.username , data.password);
-  this.authService.login(loginForm).subscribe()
+login(data:LoginForm){
+  console.log(data)
+  // const loginForm : LoginForm= new LoginForm(data.username , data.password);
+  this.authService.login(data).pipe(take(1)).subscribe()
 
   
 

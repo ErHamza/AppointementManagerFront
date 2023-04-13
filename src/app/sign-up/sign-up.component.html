@@ -9,7 +9,8 @@
 
 
 </form> -->
-<form class="form-group" (ngSubmit)="signup(data.value)"  #data = "ngForm" class="form" >
+<div class="form">
+    <form class="form-group" (ngSubmit)="signup(data.value)"  #data = "ngForm" #form >
         <p class="title">Create an account</p>
         <mat-form-field appearance="legacy" class="form-control"  >
             <mat-label>Username</mat-label>
@@ -28,17 +29,17 @@
                     <mat-label>Password</mat-label>
                     <input matInput name="password" type="password" ngModel>
     </mat-form-field>
+    <input type="file" name="image" accept="image/png, image/jpeg"  
+    (change)="selectFile($event)"/>
     <button mat-flat-button color="primary" class="submit" type="submit" >Create Account</button>
-          
-    
+              
 
-                
-    
-          
-        
-    
     </form>
     
     
+
+</div>
+
+
 
 

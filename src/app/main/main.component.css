@@ -1,20 +1,20 @@
 .container{
-    margin-top: 1em ;
+    
     display: flex;
     flex-direction: column;
 }
 
 .web-container{
     max-height: 80%;
-    margin-top: 4em ;
+    
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 500px;
-    margin-bottom: 50px;
+    margin-bottom: 300px;
 }
 
 .left-side{
-    
+    margin-top: 1.5em;
     display:  flex;
     align-items: center;
     flex-direction: column;
@@ -22,6 +22,7 @@
 }
 
 .web-left-side{
+    margin-top: 1.5em;
     position: relative;
     right:3em;
     top:10em;
@@ -45,17 +46,20 @@
     text-align: center;
     text-align-last: center;
     line-height: 1.3em;
+    margin-bottom: 1em;
 }
 
 .text2{
-    margin-top: 1em;
+    margin-bottom: 1em;
     width: 100%;
     font-weight: 500;
     font-size: 1em;
     font-family: Roboto Condensed;
     color: #6b6f70d0;
     text-align: center;
+    line-height: 1em;
 }
+
 
 a{
     color:black;
@@ -80,17 +84,24 @@ a{
 .buttons{
     display: flex;
     gap: 4px;
+    margin-bottom: 40px
 }
 
 
-.mycard{
-    margin-top: 1em;
+.right-side{
+
+    margin-top: 1.5em;
     align-self: center;
+    width: 90%;
+}
+.right-side img{
+    margin: 0 20px;
+    width:80%
 }
 
 
-.web-mycard{
-    margin-top: 1em;
+.web-right-side{
+    margin-top: 4em;
     max-height: 100px;
     width: 400px;
     justify-self: center;
@@ -115,3 +126,9 @@ a{
 li{
     list-style-type: none;
 }
+
+
+
+
+
+  

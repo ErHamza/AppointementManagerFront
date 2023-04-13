@@ -8,7 +8,8 @@ export class Admin extends User{
         password: string,
         email: string,
         phone_number: number,
-         role: string
+         role: string,
+         token : string
     ){
         super(
             user_id,
@@ -16,7 +17,7 @@ export class Admin extends User{
            password,
            email,
            phone_number,
-            role 
+            role , token
                );
     }
 

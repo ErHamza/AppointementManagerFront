@@ -11,7 +11,8 @@ export class Doctor extends User{
         email: string,
         phone_number: number,
          role: string,
-         private speciality:Specliaity
+        private _speciality:Specliaity,
+         token:string
     ){
         super(
             user_id,
@@ -19,8 +20,14 @@ export class Doctor extends User{
            password,
            email,
            phone_number,
-            role 
+            role ,token
                );
+
+           
+    }
+    
+    public get speciality():Specliaity{
+        return this._speciality
     }
     
 

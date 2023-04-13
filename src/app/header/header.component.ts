@@ -3,6 +3,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Breakpoints } from '@angular/cdk/layout'; 
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommunService } from '../services/commun.service';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+
 
 
 
@@ -13,7 +16,8 @@ import { CommunService } from '../services/commun.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   
+  myImage!: any;
+
 
   faBars=faBars;
   sideBar:boolean=false;
@@ -23,8 +27,14 @@ export class HeaderComponent implements OnInit {
       this.commun.showSideBar.next(this.sideBar)
   }
 
+  go_to_home(){
+    this.router.navigate(['home'])
+
+  }
+
   
-  constructor(private responsive: BreakpointObserver, private commun: CommunService) { }
+  constructor(private responsive: BreakpointObserver, private commun: CommunService
+    ,private router : Router, private auth : AuthService) { }
 
   
   ngOnInit(): void {
@@ -34,7 +44,16 @@ export class HeaderComponent implements OnInit {
     //   console.log(result)
       
     // })
+
+    
+
+    
+    
   }
+
+
+  
+
   
 
   

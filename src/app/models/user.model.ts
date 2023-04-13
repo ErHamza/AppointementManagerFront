@@ -13,13 +13,23 @@ export class User{
         private _password: string,
         private _email: string,
         private _phone_number: number,
-        private _role: string
+        private _role: string,
+        private _token : string
+        
 
     ){}
 
     
     public get user_id(): number {
         return this._user_id;
+    }
+    public get token():string{
+        return this.token
+    }
+
+
+    public set token(value :string){
+        this._token = value;
     }
     public set user_id(value: number) {
         this._user_id = value;

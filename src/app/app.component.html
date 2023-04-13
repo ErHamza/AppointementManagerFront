@@ -1,26 +1,23 @@
 <app-header></app-header>
 
-<div class="container">
+<div class="home">
   
     <ul class="bar" *ngIf="sideBar">
         <li routerLink="">
             Main
         </li>
         <li routerLink="signup" (click)="!sideBar">
-
             sign Up
         </li>
         
         <li routerLink="signin">
-
             sign In
         </li>
 
 
     </ul>
-
     
-      <div class="gird">
+      <div class="web-gird" (click)="hideSideBar()">
             <div class="content">
               <router-outlet></router-outlet>
               
@@ -30,7 +27,8 @@
             </div>
 
       </div>
-
+ 
+      
 
 
 

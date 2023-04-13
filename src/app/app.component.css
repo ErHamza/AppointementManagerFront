@@ -6,26 +6,30 @@
 
 
 
-.container{
-    width: 100%;
+.home{
+    margin: 0;
     
+    width: 100%;
     position: relative;
 
 }
 
 
 
-.grid{
+.content{
+    width: 100%;
+}
+
+.web-grid {
     width: 100%;
     position: absolute;
     z-index: 1;
     display: flex;
     flex-direction: column;
     
-
-
-    
 }
+
+
 
 
 .bar{
@@ -36,7 +40,7 @@
     flex-direction: column;
     align-items: center;
     justify-items: center; 
-    width: 40vw;
+    width: 30vw;
     height: 100%;
     background-color: #9096DE;
     gap: 0.750em;
