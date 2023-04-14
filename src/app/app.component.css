@@ -7,18 +7,16 @@
 
 
 .home{
-    margin: 0;
-    
     width: 100%;
     position: relative;
-
 }
-
 
 
 .content{
     width: 100%;
+    
 }
+
 
 .web-grid {
     width: 100%;
@@ -61,3 +59,13 @@ li{
     color: rgb(3, 5, 3);
     
 }
+
+.footer-container {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+    background-color: #f5f5f5;
+    text-align: center;
+  }

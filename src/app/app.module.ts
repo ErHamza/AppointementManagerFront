@@ -30,7 +30,9 @@ import { AddSpecialityComponent } from './admin/add-speciality/add-speciality.co
 import { DoctorsManagementComponent } from './admin/doctors-management/doctors-management.component';
 import { AppointementsComponent } from './admin/appointements/appointements.component';
 import { PatientsComponent } from './admin/patients/patients.component';
-
+import { AddDoctorComponent } from './admin/doctors-management/add-doctor/add-doctor.component';
+import { DoctosListComponent } from './admin/doctors-management/doctos-list/doctos-list.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -51,6 +53,8 @@ import { PatientsComponent } from './admin/patients/patients.component';
          DoctorsManagementComponent,
          AppointementsComponent,
          PatientsComponent,
+         AddDoctorComponent,
+         DoctosListComponent,
     
     
   ],
@@ -74,6 +78,7 @@ import { PatientsComponent } from './admin/patients/patients.component';
      MatIconModule,
      CountUpModule,
      MatGridListModule,
+     MatTableModule
     
   ],
   providers: [
