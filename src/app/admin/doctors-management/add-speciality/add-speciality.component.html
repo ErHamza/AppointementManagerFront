@@ -1,1 +1,9 @@
-<p>add-speciality works!</p>
+<div class="spec">
+    <form class="form-group" (ngSubmit)="addSpeciality(data.value)"  #data = "ngForm">
+        <label>Speciality Name :</label>
+        <input ngModel name="name" class="form-control">
+        <!-- <label>Belling for hour :</label>
+        <input ngModel name="bell" class="form-control"> -->
+        <button type="submit" class="btn btn-primary">Add Speciality</button>
+    </form>
+</div>

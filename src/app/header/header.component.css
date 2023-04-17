@@ -13,6 +13,21 @@
     font-size: 2em;
     margin-left: 1em;
 }
+li{
+    padding: 15px;
+    font-weight: 500;
+    list-style: none;
+    font-size: large;
+    text-decoration: none;
+    cursor: pointer;
+    color:rgb(45, 35, 32);
+    font-family: Times New Roman;
+    color: rgb(3, 5, 3);
+    
+}
+ul{
+    display: flex;
+}
 
 /* ul{
     display: flex;
@@ -59,6 +74,10 @@
     border-bottom: 1px solid rgb(204, 204, 61);
     
     
+}
+
+.menu{
+    justify-self: center;
 }
 
 li{

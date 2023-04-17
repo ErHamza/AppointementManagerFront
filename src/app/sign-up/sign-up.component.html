@@ -9,6 +9,11 @@
 
 
 </form> -->
+
+<div class="row justify-content-center">
+    
+
+    <div class="card-body">
 <div class="form">
     <form class="form-group" (ngSubmit)="signup(data.value)"  #data = "ngForm" #form >
         <p class="title">Create an account</p>
@@ -32,14 +37,12 @@
     <input type="file" name="image" accept="image/png, image/jpeg"  
     (change)="selectFile($event)"/>
     <button mat-flat-button color="primary" class="submit" type="submit" >Create Account</button>
-              
-
     </form>
     
     
 
 </div>
 
-
-
+</div>
+</div>
 

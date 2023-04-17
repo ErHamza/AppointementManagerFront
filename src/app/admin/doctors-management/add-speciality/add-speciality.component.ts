@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
 
 @Component({
   selector: 'app-add-speciality',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSpecialityComponent implements OnInit {
 
-  constructor() { }
+  constructor(private manageDoctors : ManageDoctorsService) { }
+
+  addSpeciality(data : any){
+    this.manageDoctors.addSpeciality({speciality_name: data.name}).subscribe(res=>{
+      console.log(res)
+    })
+  }
+
 
   ngOnInit(): void {
   }

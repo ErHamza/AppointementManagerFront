@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor.model';
 import { Rdv } from '../models/rdv.model';
 import { AuthService } from './auth.service';
@@ -25,6 +26,7 @@ export class DoctorsService {
   cancelRdvByDoctor(rdv_id:number){}
 
   postponeRdvByDoctor(){}
+  
   addConsultation(rdv :Rdv, diagnostic : string){
     const formData = new FormData();
     formData.append('rdv_id', rdv.rdv_id.toString());
@@ -33,6 +35,20 @@ export class DoctorsService {
 
   }
   
+
+  getDoctorPicture():Observable<any>{
+ 
+        
+        
+    const httpsheader= new HttpHeaders({
+      
+      'Accept': 'image/jpg'
+      
+  
+    })
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
+    return this.http.get(this.server + "/auth/user-image", {responseType:'blob',headers: httpsheader})
+  }
 
   
 }

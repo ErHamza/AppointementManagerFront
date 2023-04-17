@@ -25,14 +25,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { CountUpModule } from 'ngx-countup';
 import { FilterComponent } from './doctor/filter/filter.component';
 import { IntercepterService } from './services/intercepter.service';
+import { AddSpecialityComponent } from './admin/doctors-management/add-speciality/add-speciality.component';
 
-import { AddSpecialityComponent } from './admin/add-speciality/add-speciality.component';
 import { DoctorsManagementComponent } from './admin/doctors-management/doctors-management.component';
 import { AppointementsComponent } from './admin/appointements/appointements.component';
 import { PatientsComponent } from './admin/patients/patients.component';
 import { AddDoctorComponent } from './admin/doctors-management/add-doctor/add-doctor.component';
 import { DoctosListComponent } from './admin/doctors-management/doctos-list/doctos-list.component';
 import {MatTableModule} from '@angular/material/table';
+import { PatientsListComponent } from './admin/patients/patients-list/patients-list.component';
 
 
 
@@ -48,13 +49,14 @@ import {MatTableModule} from '@angular/material/table';
     AdminComponent,
     DoctorComponent,
     FilterComponent,
-    
     AddSpecialityComponent,
+    
          DoctorsManagementComponent,
          AppointementsComponent,
          PatientsComponent,
          AddDoctorComponent,
          DoctosListComponent,
+         PatientsListComponent,
     
     
   ],

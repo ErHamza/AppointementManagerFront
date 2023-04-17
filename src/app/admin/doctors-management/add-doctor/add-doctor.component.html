@@ -1,1 +1,73 @@
-<p>add-doctor works!</p>
+<main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center;">Create Doctor Account</div>
+                        <div class="card-body">
+                            <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group row">
+                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name:</label>
+                                    <div class="col-md-6">
+                                        <input required type="text" id="full_name" class="form-control" formControlName="name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="email_address" class="form-control" formControlName="email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Speciality:</label>
+                                    <div class="col-md-6">
+                                        <select class="form-select" aria-label="Default select example" formControlName="speciality">
+                                            <option  *ngFor="let speciality of specialities"
+                                            [ngValue]="speciality"
+                                            >{{speciality.speciality_name}}</option>
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="phone_number" class="form-control" formControlName="phone_number">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="present_address" class="form-control" formControlName="password">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="profile-picture" class="col-md-4 col-form-label text-md-right">image:</label>
+                                    <div class="col-md-6">
+                                        <input type="file" id="profile-picture" class="form-control" 
+                                        formControlName="image" 
+                                        accept="image/png, image/jpeg"
+                                        (change)="selectFile($event)"
+                                        >
+                                    </div>
+                                </div>
+                               
+
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                        Done
+                                        </button>
+                                    </div>
+                              </form>
+                         </div>
+                    </div>
+              </div>
+        </div>
+    </div>
+</main>

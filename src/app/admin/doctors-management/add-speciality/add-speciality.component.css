@@ -1,0 +1,11 @@
+.spec{
+    padding: 5% 10%;
+}
+
+label{
+    font-weight: 500;
+    
+}
+input{
+    margin: 0.4em;
+}

@@ -2,17 +2,21 @@ import { Specliaity } from "./speciality.model";
 import { User } from "./user.model"
 
 export class Doctor extends User{
+    [key: string]: any;
 
     
     constructor(
-        user_id: number,
-        username: string,
-        password: string,
-        email: string,
-        phone_number: number,
+        user_id: number | null,
+        username: string | null,
+        password: string | null,
+        email: string | null,
+        phone_number: string,
          role: string,
-        private _speciality:Specliaity,
-         token:string
+        private _speciality:Specliaity | null,
+         
+         image_name :string | null,
+         token?:string | null
+         
     ){
         super(
             user_id,
@@ -20,19 +24,23 @@ export class Doctor extends User{
            password,
            email,
            phone_number,
-            role ,token
+            role ,
+            
+            image_name
+            ,token,
                );
 
            
     }
     
-    public get speciality():Specliaity{
+    public get speciality():Specliaity | null{
         return this._speciality
     }
+
+    public set speciality(speciality : Specliaity | null){
+        this._speciality = speciality;
+    }
     
-
-
-
 
 
 }

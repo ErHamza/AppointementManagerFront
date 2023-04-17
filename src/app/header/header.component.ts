@@ -1,10 +1,12 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Breakpoints } from '@angular/cdk/layout'; 
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommunService } from '../services/commun.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { map, Observable, take } from 'rxjs';
+
 
 
 
@@ -15,8 +17,10 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  myImage!: any;
+export class HeaderComponent implements OnInit , OnChanges{
+  
+  isMobile$?: boolean;
+  isLaptop$?: boolean;
 
 
   faBars=faBars;
@@ -35,13 +39,44 @@ export class HeaderComponent implements OnInit {
   
   constructor(private responsive: BreakpointObserver, private commun: CommunService
     ,private router : Router, private auth : AuthService) { }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.testScreen()
+  }
 
   
+testScreen(){
+  this.responsive.observe([Breakpoints.Medium, Breakpoints.Web , Breakpoints.Large
+  ,Breakpoints.XLarge]).subscribe(
+    res=>{
+      if(res.matches){
+
+        
+      this.isLaptop$= true;
+      this.isMobile$= false;
+      }
+    }
+  );
+  this.responsive.observe([ Breakpoints.Small] ).subscribe(res=>{
+    if(res.matches){
+      this.isLaptop$= false;
+      console.log("web")
+      this.isMobile$= true;
+    }
+    
+  });
+
+}
+
+
   ngOnInit(): void {
+this.testScreen()
+  }
     // this.responsive.observe([Breakpoints.Small
-    // , Breakpoints.Web
+    
     // ]).subscribe(result=>{
-    //   console.log(result)
+    //   if(result.breakpoints == Breakpoints.Small){
+    //     this.sideBar=true
+    //   }
       
     // })
 
@@ -57,4 +92,4 @@ export class HeaderComponent implements OnInit {
   
 
   
-}
+

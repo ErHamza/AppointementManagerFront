@@ -8,10 +8,10 @@ export class Patient extends User{
         username: string,
         password: string,
         email: string,
-        phone_number: number,
+        phone_number: string,
          role: string,
          token:string,
-         private _image_name :string
+         image_name :string
          
     ){
         super(
@@ -21,15 +21,11 @@ export class Patient extends User{
            email,
            phone_number,
             role,
-            token
+            token,
+            image_name
                );
     }
 
-    public get image_name(){
-        return this._image_name
-    }
-    public set image_name(image:string){
-        this._image_name= image;
-    }
+  
 
 }

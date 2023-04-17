@@ -2,7 +2,24 @@
 <nav class="bg-light" >
     <div class="header">
 
-        <fa-icon [icon]="faBars" (click)="show()" class="sideBar"></fa-icon>
+        <fa-icon [icon]="faBars" (click)="show()" class="sideBar" 
+        *ngIf="isMobile$ || !isLaptop$"></fa-icon>
+
+        <ul class="" *ngIf="!isMobile$ || isLaptop$">
+            <li routerLink="">
+                
+                Main
+            </li>
+            <li routerLink="signup" (click)="!sideBar">
+                sign Up
+            </li>
+            
+            <li routerLink="signin">
+                sign In
+            </li>
+    
+    
+        </ul>
         <img src="../assets/logo.png" alt="logo" width="120vh" class="logo" (click)="go_to_home()">
         
         

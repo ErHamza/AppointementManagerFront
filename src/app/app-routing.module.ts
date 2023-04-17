@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddSpecialityComponent } from './admin/add-speciality/add-speciality.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { AppointementsComponent } from './admin/appointements/appointements.component';
 import { AddDoctorComponent } from './admin/doctors-management/add-doctor/add-doctor.component';
+import { AddSpecialityComponent } from './admin/doctors-management/add-speciality/add-speciality.component';
 import { DoctorsManagementComponent } from './admin/doctors-management/doctors-management.component';
 import { DoctosListComponent } from './admin/doctors-management/doctos-list/doctos-list.component';
+import { PatientsListComponent } from './admin/patients/patients-list/patients-list.component';
 import { PatientsComponent } from './admin/patients/patients.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { MainComponent } from './main/main.component';
@@ -24,7 +26,9 @@ const routes: Routes = [
       {path:'add-doctor', component:AddDoctorComponent},
       {path:'add-speciality', component:AddSpecialityComponent}
     ]},
-    {path: 'patients' , component: PatientsComponent},
+    {path: 'patients' , component: PatientsComponent, children:[
+      {path:'patients-list', component:PatientsListComponent}
+    ]},
     {path: 'appointements' , component: AppointementsComponent}
 
   ]
