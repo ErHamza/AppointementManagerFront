@@ -1,78 +1,21 @@
-<br>
-<br>
 
-<h2 class="instruction">Please flow the steps to take your Appointement</h2>
-
-
-<!-- <ng-container [ngSwitch]="stepperOrientation | async">
-    <div *ngSwitchCase="'horizontal'">Make your screen smaller to see a vertical stepper</div>
-    <div *ngSwitchCase="'vertical'">Make your screen larger to see a horizontal stepper</div>
-  </ng-container> -->
-  
-  <mat-stepper
-    class="example-stepper"
-    [orientation]="(stepperOrientation | async)!">
-    <mat-step [stepControl]="form" label="Information">
-      <form [formGroup]="form" style="display: flex; flex-direction:column">
-        <mat-form-field appearance="fill">
-          <mat-label>Speciality</mat-label>
-          <mat-select matFormFieldControl formControlName="speciality">
-            <mat-option *ngFor="let speciality of specialities" value="speciality">
-                {{speciality.speciality_name}}</mat-option>
-         
-          </mat-select>
-        </mat-form-field>
-
-        <!-- <mat-form-field>
-            <mat-label>Chose Doctor (Optional) </mat-label>
-            <input matInput>
-        </mat-form-field> -->
-        <button mat-raised-button color="blue" (click)="showDocs()">Chose Doctor</button>
-        <app-doctor *ngIf="doctorsC"></app-doctor>
+<div>
+  <div class="buttons">
       
           
-        <div>
-          <button mat-raised-button matStepperNext color="primary" style="margin-top:1em">Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="form" label="Fill out your address">
-      <form [formGroup]="form">
-        <mat-form-field appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
+          <button mat-stroked-button color="primary" routerLink="new-appointement">Make new Appointement</button>
+          <button mat-stroked-button color="primary" routerLink="add-doctor">My Appointements</button>
+          
+          
+      
+  </div>
+
+  <hr>
+  <div class="admin-box">
+      <router-outlet></router-outlet>
+  
+  </div>
+
+</div>
 
 
-    <mat-step [stepControl]="form" label="paiement">
-        <!-- <form [formGroup]="form">
-          <mat-form-field appearance="fill">
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                   required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form> -->
-      </mat-step>
-  
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-      </div>
-    </mat-step>
-  </mat-stepper>
-  

@@ -39,6 +39,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
+import { MakeAppointementComponent } from './account/make-appointement/make-appointement.component';
+
 
 
 @NgModule({
@@ -61,6 +63,8 @@ import { MatNativeDateModule } from '@angular/material/core';
          DoctosListComponent,
          PatientsListComponent,
          AccountComponent,
+         MakeAppointementComponent,
+         
     
     
   ],

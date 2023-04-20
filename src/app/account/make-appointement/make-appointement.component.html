@@ -1,0 +1,75 @@
+<br>
+<br>
+
+<h2 class="instruction">Please flow the steps to take your Appointement</h2>
+
+
+<!-- <ng-container [ngSwitch]="stepperOrientation | async">
+    <div *ngSwitchCase="'horizontal'">Make your screen smaller to see a vertical stepper</div>
+    <div *ngSwitchCase="'vertical'">Make your screen larger to see a horizontal stepper</div>
+  </ng-container> -->
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+    <mat-stepper formArrayName="formArray" 
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!">
+    <mat-step formGroupName="0" [stepControl]="formArray?.get([0])!" label="Information">
+
+      
+          <div  style="display: flex; flex-direction:column">
+            <mat-form-field appearance="fill">
+              <mat-label>Speciality</mat-label>
+              <mat-select matFormFieldControl formControlName="speciality">
+                <mat-option *ngFor="let speciality of specialities" [value]="speciality">
+                    {{speciality.speciality_name}}</mat-option>
+         
+              </mat-select>
+            </mat-form-field>
+
+        <!-- <mat-form-field>
+            <mat-label>Chose Doctor (Optional) </mat-label>
+            <input matInput>
+        </mat-form-field> -->
+        <button mat-raised-button color="blue" (click)="showDocs()">Chose Doctor</button>
+        <app-doctor *ngIf="doctorsC"></app-doctor>
+      
+          
+          <div>
+            <button mat-raised-button matStepperNext color="primary" style="margin-top:1em">Next</button>
+          </div>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="formArray?.get([1])!" label="date" formGroupName="1">
+      
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput  [matDatepicker]="picker" formControlName="date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>enter a date</mat-error>
+          </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      
+    </mat-step>
+
+
+    <mat-step  label="paiement">
+      <p><i>todo later</i></p>
+      </mat-step>
+  
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <button type="submit" mat-icon-button>done!</button>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  
+
+  </form>
+ 
