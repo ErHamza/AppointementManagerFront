@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import the required modules
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,11 +41,15 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MakeAppointementComponent } from './account/make-appointement/make-appointement.component';
+import { DoctorsComponent } from './account/make-appointement/doctors/doctors.component';
+import { MyAppointementsComponent } from './account/my-appointements/my-appointements.component';
+import { CommunService } from './services/commun.service';
 
 
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     SignUpComponent,
     SigninComponent,
@@ -64,12 +69,15 @@ import { MakeAppointementComponent } from './account/make-appointement/make-appo
          PatientsListComponent,
          AccountComponent,
          MakeAppointementComponent,
+         DoctorsComponent,
+         MyAppointementsComponent,
          
     
     
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
 
     FormsModule, // Register the FormsModule

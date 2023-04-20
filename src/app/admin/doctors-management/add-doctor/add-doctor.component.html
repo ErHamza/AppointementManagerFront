@@ -24,8 +24,8 @@
                                     <label for="user_name" class="col-md-4 col-form-label text-md-right">Speciality:</label>
                                     <div class="col-md-6">
                                         <select class="form-select" aria-label="Default select example" formControlName="speciality">
-                                            <option  *ngFor="let speciality of specialities"
-                                            [ngValue]="speciality"
+                                            <option   *ngFor="let speciality of specialities"
+                                            [ngValue]="speciality.speciality_name"
                                             >{{speciality.speciality_name}}</option>
                                         </select>
                                         

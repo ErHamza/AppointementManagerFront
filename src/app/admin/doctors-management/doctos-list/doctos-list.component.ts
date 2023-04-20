@@ -40,6 +40,7 @@ export class DoctosListComponent implements OnInit {
     this.docService.allDoctorsList().subscribe(res=>{
       console.log(res)
       this.DATA= res
+      //pour charger un list des objet dans Mat-table
       this.dataSource = new MatTableDataSource(this.DATA);
       
     })

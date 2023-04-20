@@ -19,8 +19,8 @@
           <div  style="display: flex; flex-direction:column">
             <mat-form-field appearance="fill">
               <mat-label>Speciality</mat-label>
-              <mat-select matFormFieldControl formControlName="speciality">
-                <mat-option *ngFor="let speciality of specialities" [value]="speciality">
+              <mat-select matFormFieldControl formControlName="speciality" [(ngModel)]="selectedSpec">
+                <mat-option *ngFor="let speciality of specialities" [value]="speciality" >
                     {{speciality.speciality_name}}</mat-option>
          
               </mat-select>
@@ -31,7 +31,7 @@
             <input matInput>
         </mat-form-field> -->
         <button mat-raised-button color="blue" (click)="showDocs()">Chose Doctor</button>
-        <app-doctor *ngIf="doctorsC"></app-doctor>
+        <app-doctors *ngIf="doctorsC" [speciality]="selectedSpec"></app-doctors>
       
           
           <div>

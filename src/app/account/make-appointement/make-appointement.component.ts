@@ -13,6 +13,8 @@ import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
 })
 export class MakeAppointementComponent implements OnInit {
 
+  selectedSpec! : Speciality;
+
    stepperOrientation?: Observable<StepperOrientation> ;
   myForm? : FormGroup;
   specialities! : Speciality[];

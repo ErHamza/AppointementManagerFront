@@ -44,6 +44,15 @@ addDoctor(doctor : Doctor , image:File){
       }
 
 
+      doctorsListBySpeciality(id : string){
+        
+          const params =
+            {"speciality-id": id}
+          
+
+        return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list", {params})
+  
+      }
 
 
 

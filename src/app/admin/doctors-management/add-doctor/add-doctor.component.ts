@@ -38,17 +38,20 @@ selectedFiles! : FileList;
   //     })
   onSubmit(){
     if(this.selectedFiles){
+      
       const form = this.doctorForm.value;
+      const selectedSpeciality = this.specialities.find(s => s.speciality_name === form.speciality);
+      console.log("this is my form ",form)
         const file: File | null = this.selectedFiles.item(0);
-      // console.log(file)
+      
       
       if(this.doctorForm){
         const doctor: Doctor= new Doctor(1 , this.doctorForm.value.name || '',
         this.doctorForm.value.password || '',
         this.doctorForm.value.email || '',
-        this.doctorForm.value.phone_number || "4" ,
+        this.doctorForm.value.phone_number || "" ,
         "DOCTOR",
-        this.specialities[0],
+        selectedSpeciality ||this.specialities[0],
         file?.name || '',
         ''
       );

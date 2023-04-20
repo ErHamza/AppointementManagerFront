@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Patient } from '../models/patient.model';
+import { Rdv } from '../models/rdv.model';
 import { Speciality } from '../models/speciality.model';
 
 @Injectable({
@@ -16,5 +17,9 @@ export class PatientService {
 
   makeAppointement(data: {date : Date, speciality : Speciality}){
     return this.http.post(this.server + "", data)
+  }
+
+  getMyAppointementList(){
+    return this.http.get<Rdv[]>(this.server + "/api/v0/rdv/list")
   }
 }

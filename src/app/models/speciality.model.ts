@@ -3,4 +3,7 @@ export class Speciality{
     public get speciality_name():string{
         return this._speciality_name
     }
+    public get speciality_id():number{
+        return this._speciality_id
+    }
 }
