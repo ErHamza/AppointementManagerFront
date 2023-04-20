@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { TileStyler } from '@angular/material/grid-list/tile-styler';
 import { take } from 'rxjs';
 import { Doctor } from 'src/app/models/doctor.model';
 import { Speciality } from 'src/app/models/speciality.model';
@@ -14,8 +15,8 @@ import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
 export class DoctorsComponent implements OnInit, OnChanges {
   myImage?: string;
   webview = true;
-
   @Input() speciality! : Speciality;
+  @Output() event = new EventEmitter<Doctor>();
   doctorsList? :Doctor[];
 
   makeResponsive(){
@@ -68,6 +69,10 @@ getDocsPictures(){
     };
     
   })
+}
+
+select(doc : Doctor){
+  this.event.emit(doc);
 
 }
 

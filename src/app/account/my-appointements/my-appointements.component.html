@@ -1,4 +1,4 @@
-<div class="doclist">
+<div class="rdvist">
 
     <mat-form-field>
         <mat-label>Filter</mat-label>
@@ -16,7 +16,7 @@
         <!-- Name Column -->
         <ng-container matColumnDef="Date">
           <th mat-header-cell *matHeaderCellDef> Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.data | date : 'yyyy-MM-ddTHH:mm:ss'}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.date_rdv | date : 'dd-MM-YYYY'}} </td>
         </ng-container>
       
         <!-- Weight Column -->
@@ -26,10 +26,10 @@
         </ng-container>
       
         <!-- Symbol Column -->
-        <!-- <ng-container matColumnDef="Action">
-          <th mat-header-cell *matHeaderCellDef> Action </th>
-          <td mat-cell *matCellDef="let element"> <button mat-raised-button>action</button></td>
-        </ng-container> -->
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element"> <fa-icon [icon]="faGear"></fa-icon></td>
+        </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

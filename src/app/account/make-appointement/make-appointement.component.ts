@@ -3,6 +3,7 @@ import { StepperOrientation } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
+import { Doctor } from 'src/app/models/doctor.model';
 import { Speciality } from 'src/app/models/speciality.model';
 import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
 
@@ -12,22 +13,25 @@ import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
   styleUrls: ['./make-appointement.component.css']
 })
 export class MakeAppointementComponent implements OnInit {
-
+// this for sending the selected speciality ti the componenet of docs
   selectedSpec! : Speciality;
+//sent by the doctors compoenent
+  selectedDoctor? : Doctor;
 
-   stepperOrientation?: Observable<StepperOrientation> ;
+  stepperOrientation?: Observable<StepperOrientation> ;
   myForm? : FormGroup;
   specialities! : Speciality[];
+  //when enabled by the click the user will seee the compoenent of docs
   doctorsC : boolean= false;
   formGroup!:FormGroup;
   constructor(private _formBuilder: FormBuilder,private breakpointObserver: BreakpointObserver, 
     private manageDoc : ManageDoctorsService) { 
    
   }
-
   get formArray(): AbstractControl | null { return this.formGroup.get('formArray'); }
-  
-  ngOnInit(): void {
+
+  //function to detecte the screen size and ajust the stepper orientation 
+  stepperOrientationFunction(){
     this.stepperOrientation = this.breakpointObserver
     .observe([Breakpoints.Web, Breakpoints.Medium])
     .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
@@ -36,6 +40,11 @@ export class MakeAppointementComponent implements OnInit {
       this.specialities = res;
     });
 
+  }
+  
+  ngOnInit(): void {
+    this.stepperOrientationFunction();
+  
     this.formGroup = this._formBuilder.group({
       formArray: this._formBuilder.array([
         this._formBuilder.group({
@@ -57,6 +66,12 @@ export class MakeAppointementComponent implements OnInit {
 
   showDocs(){
     this.doctorsC = true;
+  }
+
+  onSend(doc:Doctor){
+    this.selectedDoctor= doc
+    this.doctorsC=false
+
   }
 
   onSubmit(){

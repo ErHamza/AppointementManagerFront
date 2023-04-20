@@ -16,7 +16,7 @@
     <mat-step formGroupName="0" [stepControl]="formArray?.get([0])!" label="Information">
 
       
-          <div  style="display: flex; flex-direction:column">
+          <div class="step1-style">
             <mat-form-field appearance="fill">
               <mat-label>Speciality</mat-label>
               <mat-select matFormFieldControl formControlName="speciality" [(ngModel)]="selectedSpec">
@@ -31,8 +31,8 @@
             <input matInput>
         </mat-form-field> -->
         <button mat-raised-button color="blue" (click)="showDocs()">Chose Doctor</button>
-        <app-doctors *ngIf="doctorsC" [speciality]="selectedSpec"></app-doctors>
-      
+        <app-doctors *ngIf="doctorsC" [speciality]="selectedSpec" (event)="onSend($event)"></app-doctors>
+        <p *ngIf="selectedDoctor"><i>Your doctor :</i>{{selectedDoctor.username}}</p>
           
           <div>
             <button mat-raised-button matStepperNext color="primary" style="margin-top:1em">Next</button>
@@ -50,8 +50,8 @@
             <mat-error>enter a date</mat-error>
           </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button  matStepperPrevious color="warn">Back</button>
+          <button mat-raised-button matStepperNext color="primary" >Next</button>
         </div>
       
     </mat-step>
@@ -59,13 +59,17 @@
 
     <mat-step  label="paiement">
       <p><i>todo later</i></p>
+      <div>
+        <button mat-raised-button  matStepperPrevious color="warn">Back</button>
+        <button mat-raised-button matStepperNext color="primary" >Next</button>
+      </div>
       </mat-step>
   
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <button type="submit" mat-icon-button>done!</button>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
+      <div class="steper2-style">
+        <button mat-raised-button matStepperPrevious color="warn">Back</button>
+      <button type="submit" color="primary" mat-raised-button>Finish</button>
       </div>
     </mat-step>
   </mat-stepper>

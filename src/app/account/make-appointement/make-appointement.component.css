@@ -1,3 +1,16 @@
 .instruction{
     text-align: center;
 }
+
+.step1-style{
+    display: flex;
+    flex-direction:column;
+    gap:.8em
+}
+
+.step2-style{
+    display: grid;
+    column-gap: 4px;
+    grid-template-columns: 1fr;
+    
+}

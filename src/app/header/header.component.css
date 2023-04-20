@@ -35,7 +35,7 @@
 ul{
     
     display: flex;
-    justify-self: flex-start;
+    justify-content: center;
     gap: 1em;
     /* margin-right: 10em; */
     
@@ -81,12 +81,14 @@ li:hover{
 .logout{
     margin-right: 4em;
     font-size: 1.3em;
+    cursor: pointer;
 }
 
 .logo{
     margin-left: 4em;
     cursor: pointer;
     justify-self: flex-start;
+    
     
 }
 
