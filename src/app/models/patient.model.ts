@@ -1,4 +1,4 @@
-import { Specliaity } from "./speciality.model";
+
 import { User } from "./user.model";
 
 export class Patient extends User{

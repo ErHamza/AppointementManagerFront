@@ -1,9 +1,18 @@
 
-<div class="signin-container">
+ <main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center;"><p class="title">Login to your account</p></div>
+                        <div class="card-body">
+
+
+
     <form class="form-group" (ngSubmit)="login(data.value)"  #data = "ngForm" class="form" >
-        <p class="title">Login to your account</p>
+        
       
-    <mat-form-field  class="form-control" appearance="legacy">
+    <!-- <mat-form-field  class="form-control" appearance="legacy">
             <mat-label>Email</mat-label>
             <input matInput name="username" ngModel>
         </mat-form-field>
@@ -12,15 +21,34 @@
     <mat-form-field class="form-control" appearance="standard">
                     <mat-label>Password</mat-label>
                     <input matInput name="password" type="password" ngModel>
-    </mat-form-field>
-    <button mat-flat-button color="primary" class="submit" type="submit" >Login</button>
-          
+    </mat-form-field> -->
+
+    <div class="form-group row">
+        <label for="email_address" class="col-md-4 col-form-label text-md-right">Username:</label>
+        <div class="col-md-6">
+            <input type="text" ngModel id="email_address" class="form-control" name="username">
+        </div>
+    </div>
+
+  
+
+    <div class="form-group row">
+        <label for="password" class="col-md-4 col-form-label text-md-right">Password:</label>
+        <div class="col-md-6">
+            <input type="text" id="passoword" class="form-control" name="password" ngModel>
+        </div>
+    </div>
+
+    <div class="col-md-6 offset-md-4" style="margin-top: 1em ;">
+        <button mat-flat-button color="primary" class="submit" type="submit" >Login</button>
+    </div>
     
-    
-        
+                  
     
     </form>
-</div>
+
+    </div></div></div></div></div></main>
+
 
 
 

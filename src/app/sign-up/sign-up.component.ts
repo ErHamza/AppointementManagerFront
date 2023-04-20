@@ -24,6 +24,7 @@ export class SignUpComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
   signup(data:Patient){
+    console.log(data.password)
     if(this.selectedFiles ){
       const file: File | null = this.selectedFiles.item(0);
       

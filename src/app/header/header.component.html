@@ -1,26 +1,56 @@
 
 <nav class="bg-light" >
     <div class="header">
+        <img src="../assets/logo.png" alt="logo" width="120vh" class="logo" (click)="go_to_home()">
 
-        <fa-icon [icon]="faBars" (click)="show()" class="sideBar" 
-        *ngIf="isMobile$ || !isLaptop$"></fa-icon>
+        
 
-        <ul class="" *ngIf="!isMobile$ || isLaptop$">
-            <li routerLink="">
+        <ul  *ngIf="!isMobile$ || isLaptop$">
+            <li routerLink="home">
                 
                 Main
             </li>
-            <li routerLink="signup" (click)="!sideBar">
+
+            <li routerLink="account" *ngIf="user?.username">
+                
+                Account
+            </li>
+
+            <li routerLink="doctors-list" *ngIf="user?.username" >
+                
+                Doctors
+            </li>
+            <li *ngIf="user?.username == undefined" routerLink="signup" (click)="!sideBar" >
                 sign Up
+                
             </li>
             
-            <li routerLink="signin">
+            
+            <li routerLink="signin" *ngIf="user?.username == undefined">
                 sign In
             </li>
-    
+
+            <li routerLink="#">About</li>
+
+           
+     
     
         </ul>
-        <img src="../assets/logo.png" alt="logo" width="120vh" class="logo" (click)="go_to_home()">
+
+        <span *ngIf="user?.username && !isMobile$ " class="logout"  >
+            <span >
+            <b style="color: green; margin-right:.7em ;" >{{user?.username}}</b></span>
+    
+            <a (click)="logout()" style="color: red;">Logout <fa-icon [icon]="poweroff"></fa-icon>
+                
+            </a>
+            
+        </span>
+
+
+        <fa-icon [icon]="faBars" (click)="show()" class="sideBar" 
+        *ngIf="isMobile$ || !isLaptop$"></fa-icon>
+        
         
         
     

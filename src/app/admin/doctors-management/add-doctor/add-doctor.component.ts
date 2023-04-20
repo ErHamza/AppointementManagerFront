@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { take } from 'rxjs';
 import { Doctor } from 'src/app/models/doctor.model';
-import { Specliaity } from 'src/app/models/speciality.model';
+import { Speciality } from 'src/app/models/speciality.model';
 import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
 export class AddDoctorComponent implements OnInit {
 
   constructor(private manageDocors : ManageDoctorsService) { }
-specialities! : Specliaity[];
+specialities! : Speciality[];
 selectedFile! : File ;
 selectedFiles! : FileList;
 

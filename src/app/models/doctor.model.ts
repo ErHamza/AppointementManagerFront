@@ -1,4 +1,4 @@
-import { Specliaity } from "./speciality.model";
+import { Speciality } from "./speciality.model";
 import { User } from "./user.model"
 
 export class Doctor extends User{
@@ -12,7 +12,7 @@ export class Doctor extends User{
         email: string | null,
         phone_number: string,
          role: string,
-        private _speciality:Specliaity | null,
+        private _speciality:Speciality | null,
          
          image_name :string | null,
          token?:string | null
@@ -33,11 +33,11 @@ export class Doctor extends User{
            
     }
     
-    public get speciality():Specliaity | null{
+    public get speciality():Speciality | null{
         return this._speciality
     }
 
-    public set speciality(speciality : Specliaity | null){
+    public set speciality(speciality : Speciality | null){
         this._speciality = speciality;
     }
     

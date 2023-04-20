@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor.model';
 import { Rdv } from '../models/rdv.model';
-import { Specliaity } from '../models/speciality.model';
+import { Speciality } from '../models/speciality.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ManageDoctorsService {
 
   constructor(private http:HttpClient) { }
   SpecialityList(){
-    return this.http.get<Specliaity[]>(this.server + "/api/v0/admin/speciality/list")
+    return this.http.get<Speciality[]>(this.server + "/api/v0/admin/speciality/list")
   }
 
   addSpeciality(data:{speciality_name : string}){

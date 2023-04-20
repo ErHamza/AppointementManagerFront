@@ -1,22 +1,11 @@
-
-
-<!-- <form (ngSubmit)="signup(data.value)"  #data = "ngForm" class="form">
+<!-- 
+<div class="row justify-content-center" style="background-color: #F6F8FA;">
     
-    <label>Username</label>
-    <input type="email" ngModel>
-    <label>password</label>
-    <input type="password" ngModel>
-
-
-</form> -->
-
-<div class="row justify-content-center">
-    
-
+<div class="card-header"><p class="title">Create an account</p></div>
     <div class="card-body">
 <div class="form">
     <form class="form-group" (ngSubmit)="signup(data.value)"  #data = "ngForm" #form >
-        <p class="title">Create an account</p>
+        
         <mat-form-field appearance="legacy" class="form-control"  >
             <mat-label>Username</mat-label>
             <input matInput name="username" ngModel> 
@@ -45,4 +34,69 @@
 
 </div>
 </div>
+ -->
 
+
+ <main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center;">Create Account</div>
+                        <div class="card-body">
+                            <form  (ngSubmit)="signup(data.value)"  #data = "ngForm" #form>
+                                <div class="form-group row">
+                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name:</label>
+                                    <div class="col-md-6">
+                                        <input required type="text" id="full_name" class="form-control" name="username" ngModel>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" ngModel id="email_address" class="form-control" name="email">
+                                    </div>
+                                </div>
+
+                              
+
+                                <div class="form-group row">
+                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Phone Number:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="phone_number" class="form-control" name="phone_number" ngModel>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="passoword" class="form-control" ngModel name="password">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="profile-picture" class="col-md-4 col-form-label text-md-right">Picture:</label>
+                                    <div class="col-md-6">
+                                        <input type="file" id="profile-picture" class="form-control" 
+                                        name="image" 
+                                        accept="image/png, image/jpeg"
+                                        (change)="selectFile($event)"
+                                        >
+                                    </div>
+                                </div>
+                               
+
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                        Create Account
+                                        </button>
+                                    </div>
+                              </form>
+                         </div>
+                    </div>
+              </div>
+        </div>
+    </div>
+</main>

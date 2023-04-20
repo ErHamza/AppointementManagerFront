@@ -5,7 +5,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommunService } from '../services/commun.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { map, Observable, take } from 'rxjs';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { User } from '../models/user.model';
 
 
 
@@ -18,12 +19,15 @@ import { map, Observable, take } from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit , OnChanges{
+  user? : User | null;
   
   isMobile$?: boolean;
   isLaptop$?: boolean;
 
 
   faBars=faBars;
+  poweroff=faPowerOff;
+  
   sideBar:boolean=false;
 
   show(){
@@ -67,20 +71,19 @@ testScreen(){
 
 }
 
-
   ngOnInit(): void {
 this.testScreen()
-  }
-    // this.responsive.observe([Breakpoints.Small
-    
-    // ]).subscribe(result=>{
-    //   if(result.breakpoints == Breakpoints.Small){
-    //     this.sideBar=true
-    //   }
-      
-    // })
+this.auth.UserData.subscribe(myuser=>{
+  this.user=myuser
 
-    
+ })
+ console.log(this.user)
+  
+}
+
+  logout(){
+    this.auth.logout()
+  }
 
     
     

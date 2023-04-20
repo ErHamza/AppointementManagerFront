@@ -34,8 +34,11 @@ import { AddDoctorComponent } from './admin/doctors-management/add-doctor/add-do
 import { DoctosListComponent } from './admin/doctors-management/doctos-list/doctos-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { PatientsListComponent } from './admin/patients/patients-list/patients-list.component';
-
-
+import { AccountComponent } from './account/account.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -57,6 +60,7 @@ import { PatientsListComponent } from './admin/patients/patients-list/patients-l
          AddDoctorComponent,
          DoctosListComponent,
          PatientsListComponent,
+         AccountComponent,
     
     
   ],
@@ -80,7 +84,11 @@ import { PatientsListComponent } from './admin/patients/patients-list/patients-l
      MatIconModule,
      CountUpModule,
      MatGridListModule,
-     MatTableModule
+     MatTableModule,
+     MatStepperModule,
+     MatSelectModule,
+     MatDatepickerModule,
+     MatNativeDateModule
     
   ],
   providers: [

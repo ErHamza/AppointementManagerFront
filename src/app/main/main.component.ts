@@ -52,17 +52,18 @@ export class MainComponent implements OnInit, AfterContentInit , AfterViewInit{
    
    
  
-    this.responsive.observe([Breakpoints.Large ]).subscribe(result=>{
-    this.webview= false
+    this.responsive.observe([Breakpoints.Small , Breakpoints.XSmall ]).subscribe(result=>{
+    this.webview= true
+    console.log(result)
       if(result.matches){
-        this.webview= true;
+        this.webview= false;
 
       }
     })
   }
 
   ngAfterContentInit(): void {
-      this.renderer.setStyle(this.elem.nativeElement.ownerDocument.body , 'background', '#F6F8FA')
+      // this.renderer.setStyle(this.elem.nativeElement.ownerDocument.body , 'background', '#F6F8FA')
      
     }
 
