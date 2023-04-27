@@ -15,7 +15,10 @@ export class Doctor extends User{
         private _speciality:Speciality | null,
          
          image_name :string | null,
-         token?:string | null
+         public picture?: string,
+         token?:string | null,
+         
+         
          
     ){
         super(

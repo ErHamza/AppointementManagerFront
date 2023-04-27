@@ -25,6 +25,7 @@ const routes: Routes = [
   {path:'doctors-list' , component:DoctorComponent},
   {path:'admin' , component :AdminComponent, children:[
     {path:'doctors' , component:DoctorsManagementComponent, children:[
+      {path: '', redirectTo: 'doctors-list', pathMatch: 'full'},
       {path:'doctors-list', component:DoctosListComponent},
       {path:'add-doctor', component:AddDoctorComponent},
       {path:'add-speciality', component:AddSpecialityComponent}
@@ -38,6 +39,7 @@ const routes: Routes = [
 
   },
   {path:"account"  , component:AccountComponent, children:[
+    {path: '', redirectTo: 'my-appointements', pathMatch: 'full'},
     {path:"new-appointement", component:MakeAppointementComponent},
     {path: 'my-appointements', component : MyAppointementsComponent}
   ]}

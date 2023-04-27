@@ -9,4 +9,6 @@ export class Rdv {
         public doctor: Doctor,
         public patient: Patient
     ) {}
+
+    
 }

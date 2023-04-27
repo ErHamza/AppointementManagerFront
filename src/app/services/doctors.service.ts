@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { exhaustMap, Observable, take } from 'rxjs';
 import { Doctor } from '../models/doctor.model';
 import { Rdv } from '../models/rdv.model';
 import { AuthService } from './auth.service';
@@ -36,19 +36,23 @@ export class DoctorsService {
   }
   
 
-  getDoctorPicture():Observable<any>{
+  getDoctorPicture(id: number):Observable<any>{
  
         
         
     const httpsheader= new HttpHeaders({
       
-      'Accept': 'image/jpg'
-      
-  
+      'Accept': 'image/jpg',
+    
     })
     // const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
-    return this.http.get(this.server + "/auth/user-image", {responseType:'blob',headers: httpsheader})
+    return this.http.get(this.server + "/auth/doctor-image/"+id, {responseType:'blob',headers: httpsheader})
   }
+
+
+  //try get users with image
+
+
 
   
 }

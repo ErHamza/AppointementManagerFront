@@ -1,13 +1,9 @@
 <br>
 <br>
 
-<h2 class="instruction">Please flow the steps to take your Appointement</h2>
+<h2 class="instruction">Please flow the steps to make your Appointement</h2>
 
 
-<!-- <ng-container [ngSwitch]="stepperOrientation | async">
-    <div *ngSwitchCase="'horizontal'">Make your screen smaller to see a vertical stepper</div>
-    <div *ngSwitchCase="'vertical'">Make your screen larger to see a horizontal stepper</div>
-  </ng-container> -->
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
     <mat-stepper formArrayName="formArray" 
@@ -30,12 +26,12 @@
             <mat-label>Chose Doctor (Optional) </mat-label>
             <input matInput>
         </mat-form-field> -->
-        <button mat-raised-button color="blue" (click)="showDocs()">Chose Doctor</button>
+        <button mat-raised-button color="blue" type="button" (click)="showDocs()">Chose Doctor</button>
         <app-doctors *ngIf="doctorsC" [speciality]="selectedSpec" (event)="onSend($event)"></app-doctors>
         <p *ngIf="selectedDoctor"><i>Your doctor :</i>{{selectedDoctor.username}}</p>
           
           <div>
-            <button mat-raised-button matStepperNext color="primary" style="margin-top:1em">Next</button>
+            <button mat-raised-button matStepperNext type="button" color="primary" style="margin-top:1em">Next</button>
           </div>
         </div>
     </mat-step>
@@ -50,8 +46,8 @@
             <mat-error>enter a date</mat-error>
           </mat-form-field>
         <div>
-          <button mat-raised-button  matStepperPrevious color="warn">Back</button>
-          <button mat-raised-button matStepperNext color="primary" >Next</button>
+          <button mat-raised-button  matStepperPrevious color="warn" type="button">Back</button>
+          <button mat-raised-button matStepperNext color="primary" type="button">Next</button>
         </div>
       
     </mat-step>
@@ -60,8 +56,8 @@
     <mat-step  label="paiement">
       <p><i>todo later</i></p>
       <div>
-        <button mat-raised-button  matStepperPrevious color="warn">Back</button>
-        <button mat-raised-button matStepperNext color="primary" >Next</button>
+        <button mat-raised-button  matStepperPrevious color="warn" type="button">Back</button>
+        <button mat-raised-button matStepperNext color="primary" type="button" >Next</button>
       </div>
       </mat-step>
   

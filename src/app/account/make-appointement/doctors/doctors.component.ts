@@ -22,7 +22,8 @@ export class DoctorsComponent implements OnInit, OnChanges {
   makeResponsive(){
     this.responsive.observe([Breakpoints.Small , Breakpoints.XSmall ]).subscribe(result=>{
       this.webview= true
-      console.log(result)
+      
+
         if(result.matches){
           this.webview= false;
   
@@ -39,7 +40,7 @@ export class DoctorsComponent implements OnInit, OnChanges {
    getDoctorsList(){
     this._managementDoc.doctorsListBySpeciality(this.speciality.speciality_id.toString()).subscribe(res=>{
       this.doctorsList= res
-      console.log(res)})
+      })
    }  
   ngOnChanges(changes: SimpleChanges): void {
     this.getDoctorsList()
@@ -51,14 +52,14 @@ export class DoctorsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getDoctorsList()
     this.getDocsPictures()
-    console.log(this.speciality)
+    
 
 
   }
 
 // this methode to get the pictures of docs
 getDocsPictures(){
-  this._doctorsService.getDoctorPicture().pipe(take(1)).subscribe( (data: Blob)=>{
+  this._doctorsService.getDoctorPicture(54).pipe(take(1)).subscribe( (data: Blob)=>{
     const reader = new FileReader();
     reader.readAsDataURL(data);
   

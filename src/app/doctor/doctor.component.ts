@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { pipe, take } from 'rxjs';
+import { forkJoin, from, map, Observable, pipe, take } from 'rxjs';
 import { Doctor } from '../models/doctor.model';
 import { DoctorsService } from '../services/doctors.service';
 
@@ -11,7 +11,7 @@ import { DoctorsService } from '../services/doctors.service';
 })
 export class DoctorComponent implements OnInit {
   webview =true;
-
+  loaded = false;
   doctorsList: Doctor[]= []
   myImage?: string;
 
@@ -30,27 +30,49 @@ export class DoctorComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    this.makeResponsive();
-
-  this.docService.allDoctorsList().pipe(take(1)).subscribe(response=>{
-    this.doctorsList= response;
-    console.log(this.doctorsList  )
-   
+  getDoctorPicture(id : number) {
     
-  })
-  
-     this.docService.getDoctorPicture().pipe(take(1)).subscribe( (data: Blob)=>{
+    this.docService.getDoctorPicture(id).pipe(take(1)).subscribe( (data: Blob)=>{
       const reader = new FileReader();
       reader.readAsDataURL(data);
-    
       reader.onloadend = () => {
-        
-        this.myImage = reader.result as string;
+        return reader.result as string;
         
       };
+     
       
     })
   }
+
+  // getDoctorPicture(id: number): Observable<string> {
+  //   return from(this.docService.getDoctorPicture(id)).pipe(
+  //     map((data: Blob) => {
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL(data);
+  //       reader.onloadend = () => {
+  //         return reader.result as string;
+  //       };
+  //       return ''; // Return an empty string to avoid returning undefined
+  //     })
+  //   );
+  // }
+  
+  
+
+  
+
+  ngOnInit(): void {
+    this.loaded=false
+    this.makeResponsive();
+  this.docService.allDoctorsList().pipe(take(1)).subscribe(response=>{
+    this.doctorsList= response;
+    
+  })
+// this.assaignDocPic()
+  
+  
+  }
+
+
 
 }
