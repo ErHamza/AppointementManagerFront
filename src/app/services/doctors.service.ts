@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { exhaustMap, Observable, take } from 'rxjs';
+import { exhaustMap, map, Observable, take } from 'rxjs';
 import { Doctor } from '../models/doctor.model';
 import { Rdv } from '../models/rdv.model';
 import { AuthService } from './auth.service';
@@ -13,9 +13,25 @@ export class DoctorsService {
   
   constructor(private auth : AuthService, private http : HttpClient) { }
 
-  allDoctorsList(){
-    return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list")
+  getDoctorsList(){
+    return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list").pipe(
+      map(res=>{
+      // I use the map to fetch the picture of each user
+          res.forEach(user=>{
+                this.getDoctorPicture(user.user_id!).subscribe((data:any)=>{
+                  console.log("live")
+                  const reader = new FileReader();
+                    reader.readAsDataURL(data);
+                    reader.onloadend = () => {
+                      const obj= reader.result as string;
+                      user.picture=obj }})
+          })
 
+          return res
+      
+      }
+    ))
+  
   }
 
   DoctorsRdv(){
@@ -32,25 +48,44 @@ export class DoctorsService {
     formData.append('rdv_id', rdv.rdv_id.toString());
     formData.append('diagnostic', diagnostic)
     return this.http.post(this.server + '/api/v0/consultation/add', formData)
-
   }
   
 
   getDoctorPicture(id: number):Observable<any>{
- 
-        
-        
     const httpsheader= new HttpHeaders({
-      
       'Accept': 'image/jpg',
-    
     })
     // const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
     return this.http.get(this.server + "/auth/doctor-image/"+id, {responseType:'blob',headers: httpsheader})
   }
 
 
-  //try get users with image
+  
+doctorsListBySpeciality(id : string){
+        
+  const params =
+    {"speciality-id": id}
+  
+
+return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list", {params}).pipe(
+  map(res=>{
+  // I use the map to fetch the picture of each user
+      res.forEach(user=>{
+            this.getDoctorPicture(user.user_id!).subscribe((data:any)=>{
+              
+              const reader = new FileReader();
+                reader.readAsDataURL(data);
+                reader.onloadend = () => {
+                  const obj= reader.result as string;
+                  user.picture=obj }})
+      })
+
+      return res
+  
+  }
+))
+
+}
 
 
 

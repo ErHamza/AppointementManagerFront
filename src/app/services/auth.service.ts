@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import jwt_decode from 'jwt-decode';
 import { LoginForm } from '../models/loginForm.model';
 import { Patient } from '../models/patient.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   UserData= new BehaviorSubject<User|null>(null);
   server:string="http://127.0.0.1:8085";
   expireTime :any;
-   constructor(private http: HttpClient) { }
+   constructor(private http: HttpClient, private route : Router) { }
 
 signup(patient: Patient, image :any ){
   const httpOptions = {
@@ -32,9 +33,6 @@ signup(patient: Patient, image :any ){
   
   return this.http.post<{token: string}>(this.server+'/auth/register',  formData).
     pipe(tap(response=>{
-      console.log(response)
-
-   
    this.HandaleAuth(response.token)              
                 }));
 
@@ -69,13 +67,23 @@ private HandaleAuth(data :any)
               'Authorization' : 'Bearer '+data
             })
           } 
-           
           ).pipe(
             map(res=>{
                 const user:User = res;
                 user.token= data
                 this.UserData.next(user);
                 localStorage.setItem('UserData', JSON.stringify(user));
+                switch(user.role){
+                  case "PATIENT":
+                    this.route.navigate(['account'])
+                    break
+                   case "ADMIN": 
+                   this.route.navigate(['admin'])
+                   break;
+                   case "DOCTOR":
+                    this.route.navigate(['home'])
+              
+                }
             })
           ).subscribe()
                     
@@ -109,6 +117,7 @@ logout(){
     clearTimeout(this.expireTime);
   }
   this.expireTime=null; 
+  
 }
 
 

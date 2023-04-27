@@ -63,7 +63,7 @@ testScreen(){
   this.responsive.observe([ Breakpoints.Small] ).subscribe(res=>{
     if(res.matches){
       this.isLaptop$= false;
-      console.log("web")
+      
       this.isMobile$= true;
     }
     
@@ -77,12 +77,13 @@ this.auth.UserData.subscribe(myuser=>{
   this.user=myuser
 
  })
- console.log(this.user)
+ 
   
 }
 
   logout(){
     this.auth.logout()
+    this.router.navigate([''])
   }
 
     

@@ -37,7 +37,7 @@ export class DoctosListComponent implements OnInit {
   constructor(private docService :DoctorsService) { }
 
   ngOnInit(): void {
-    this.docService.allDoctorsList().subscribe(res=>{
+    this.docService.getDoctorsList().subscribe(res=>{
       console.log(res)
       this.DATA= res
       //pour charger un list des objet dans Mat-table

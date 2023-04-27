@@ -28,44 +28,14 @@ export class DoctorComponent implements OnInit {
         }
       })
   }
-
-
-  getDoctorPicture(id : number) {
     
-    this.docService.getDoctorPicture(id).pipe(take(1)).subscribe( (data: Blob)=>{
-      const reader = new FileReader();
-      reader.readAsDataURL(data);
-      reader.onloadend = () => {
-        return reader.result as string;
-        
-      };
-     
-      
-    })
-  }
-
-  // getDoctorPicture(id: number): Observable<string> {
-  //   return from(this.docService.getDoctorPicture(id)).pipe(
-  //     map((data: Blob) => {
-  //       const reader = new FileReader();
-  //       reader.readAsDataURL(data);
-  //       reader.onloadend = () => {
-  //         return reader.result as string;
-  //       };
-  //       return ''; // Return an empty string to avoid returning undefined
-  //     })
-  //   );
-  // }
-  
-  
-
-  
 
   ngOnInit(): void {
     this.loaded=false
     this.makeResponsive();
-  this.docService.allDoctorsList().pipe(take(1)).subscribe(response=>{
+  this.docService.getDoctorsList().pipe(take(1)).subscribe(response=>{
     this.doctorsList= response;
+    
     
   })
 // this.assaignDocPic()

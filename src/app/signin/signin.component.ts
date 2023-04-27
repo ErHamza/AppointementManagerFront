@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { audit, pipe, take } from 'rxjs';
 import { LoginForm } from '../models/loginForm.model';
+import { User } from '../models/user.model';
 
 import { AuthService } from '../services/auth.service';
 
@@ -20,13 +21,31 @@ export class SigninComponent implements OnInit, OnDestroy {
 
 login(data:LoginForm){
   console.log(data)
-  // const loginForm : LoginForm= new LoginForm(data.username , data.password);
+  
   this.authService.login(data).pipe(take(1)).subscribe(res=>{
     if(res){
-      this.route.navigate(["account"])
+      // const user  = this.authService.UserData.pipe(take(1)).subscribe(val=>{
+      //   console.log("my user",val)
+      //   switch(val!.role){
+      //     case "PATIENT":
+      //       this.route.navigate(['account'])
+      //       break
+      //      case "ADMIN": 
+      //      this.route.navigate(['admin'])
+      //      break;
+      //      case "DOCTOR":
+      //       this.route.navigate(['home'])
+      
+      //   }
+      // })
+  
+      
     }
-  });
 
+    
+  })
+ 
+ 
 
   
 

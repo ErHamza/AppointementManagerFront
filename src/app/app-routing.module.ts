@@ -24,6 +24,7 @@ const routes: Routes = [
   {path:'signin', component:SigninComponent},
   {path:'doctors-list' , component:DoctorComponent},
   {path:'admin' , component :AdminComponent, children:[
+    {path:'', redirectTo:'doctors' , pathMatch:'full'},
     {path:'doctors' , component:DoctorsManagementComponent, children:[
       {path: '', redirectTo: 'doctors-list', pathMatch: 'full'},
       {path:'doctors-list', component:DoctosListComponent},
