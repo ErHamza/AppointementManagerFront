@@ -28,10 +28,16 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="Action">
           <th mat-header-cell *matHeaderCellDef>Action</th>
-          <td mat-cell *matCellDef="let element"> <fa-icon [icon]="faGear"></fa-icon></td>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button [matMenuTriggerFor]="menu">
+              <fa-icon [icon]="faGear"></fa-icon></button>
+            <mat-menu #menu>
+              <button mat-menu-item>Postpone</button>
+              <button mat-menu-item>Cancel</button>
+            </mat-menu> </td>
         </ng-container>
       
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       
         <!-- Row shown when there is no matching data. -->

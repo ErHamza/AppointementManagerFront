@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { exhaustMap, map, Observable, take } from 'rxjs';
 import { Doctor } from '../models/doctor.model';
+import { Patient } from '../models/patient.model';
 import { Rdv } from '../models/rdv.model';
 import { AuthService } from './auth.service';
 
@@ -65,9 +66,7 @@ doctorsListBySpeciality(id : string){
         
   const params =
     {"speciality-id": id}
-  
-
-return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list", {params}).pipe(
+  return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list", {params}).pipe(
   map(res=>{
   // I use the map to fetch the picture of each user
       res.forEach(user=>{
@@ -87,7 +86,12 @@ return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list", {param
 
 }
 
-
+doctorAppoinentements(){
+  return this.http.get<Rdv[]>(this.server+ '/api/v0/doctor/rdv/list')
+}
+doctorConsultations(){
+  return this.http.get<Patient[]>(this.server+ '/api/v0/consultations/list')
+}
 
   
 }

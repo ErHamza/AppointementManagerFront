@@ -22,7 +22,7 @@ export class MyAppointementsComponent implements OnInit {
 getPatientAppointements(){
   this._patientService.getMyAppointementList().subscribe(res=>{
     this.appointementList = res;
-    console.log("Resss",res)
+    
     // this.appointementList.forEach(element=>{
     //   element.date_rdv = new Date(element.date_rdv)
     // })

@@ -12,6 +12,11 @@ import { DoctorsManagementComponent } from './admin/doctors-management/doctors-m
 import { DoctosListComponent } from './admin/doctors-management/doctos-list/doctos-list.component';
 import { PatientsListComponent } from './admin/patients/patients-list/patients-list.component';
 import { PatientsComponent } from './admin/patients/patients.component';
+import { DocotrAppointementsComponent } from './doctor-comp/docotr-appointements/docotr-appointements.component';
+import { DoctorCompComponent } from './doctor-comp/doctor-comp.component';
+import { MyPatientsComponent } from './doctor-comp/my-patients/my-patients.component';
+
+
 import { DoctorComponent } from './doctor/doctor.component';
 import { MainComponent } from './main/main.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -43,6 +48,14 @@ const routes: Routes = [
     {path: '', redirectTo: 'my-appointements', pathMatch: 'full'},
     {path:"new-appointement", component:MakeAppointementComponent},
     {path: 'my-appointements', component : MyAppointementsComponent}
+  ]},
+  {path:'doctor', component : DoctorCompComponent, children:[
+
+    {path: "", redirectTo: "myappointements" , pathMatch:'full'},
+    {path: "mypatients", component : MyPatientsComponent},
+    {path: "myappointements", component : DocotrAppointementsComponent},
+    
+
   ]}
   
   

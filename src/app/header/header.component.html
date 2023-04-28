@@ -11,7 +11,10 @@
                 Main
             </li>
 
-            <li routerLink="account" *ngIf="user?.username">
+            <li [routerLink]="user?.role === 'PATIENT' ? '/account' : (user?.role === 'ADMIN' ? '/admin' : '/doctor')" *ngIf="user?.username">
+
+            
+
                 
                 Account
             </li>

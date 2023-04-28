@@ -1,0 +1,44 @@
+/* Structure */
+
+
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+
+.rdvlist{
+    width: 100%;
+    height: 100%;
+    
+
+}
+
+td{
+    font-size: .9em;
+}
+button{
+    font-size: .9em;
+}
+
+fa-icon{
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+
+
+.consultation{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+

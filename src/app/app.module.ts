@@ -43,7 +43,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MakeAppointementComponent } from './account/make-appointement/make-appointement.component';
 import { DoctorsComponent } from './account/make-appointement/doctors/doctors.component';
 import { MyAppointementsComponent } from './account/my-appointements/my-appointements.component';
-import { CommunService } from './services/commun.service';
+
+import { DoctorCompComponent } from './doctor-comp/doctor-comp.component';
+import { MyPatientsComponent } from './doctor-comp/my-patients/my-patients.component';
+import { DocotrAppointementsComponent } from './doctor-comp/docotr-appointements/docotr-appointements.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { NewconsultationComponent } from './doctor-comp/docotr-appointements/newconsultation/newconsultation.component';
+
+
+
+
 
 
 
@@ -71,6 +80,15 @@ import { CommunService } from './services/commun.service';
          MakeAppointementComponent,
          DoctorsComponent,
          MyAppointementsComponent,
+         DoctorCompComponent,
+         MyPatientsComponent,
+         DocotrAppointementsComponent,
+         NewconsultationComponent
+         
+         
+    
+         
+         
          
     
     
@@ -100,7 +118,8 @@ import { CommunService } from './services/commun.service';
      MatStepperModule,
      MatSelectModule,
      MatDatepickerModule,
-     MatNativeDateModule
+     MatNativeDateModule,
+     MatMenuModule
     
   ],
   providers: [

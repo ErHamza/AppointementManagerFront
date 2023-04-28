@@ -57,7 +57,7 @@ login(data: LoginForm)
 private HandaleAuth(data :any)
     {
       const tokenInfo:any = jwt_decode(data);
-      console.log(tokenInfo)
+      
           const  experation_time =new Date(new Date().getTime() + +tokenInfo?.expTime * 60*1000)
           const user_id = tokenInfo.user_id;
           this.http.get<User>(this.server + '/api/v0/manage/user/'+ user_id,
@@ -81,7 +81,7 @@ private HandaleAuth(data :any)
                    this.route.navigate(['admin'])
                    break;
                    case "DOCTOR":
-                    this.route.navigate(['home'])
+                    this.route.navigate(['doctor'])
               
                 }
             })
@@ -138,7 +138,7 @@ return this.http.post(this.server + '/auth/image',fromData)
 getUserPicture():Observable<any>{
  
   const token = this.UserData.value?.token;
-  console.log("token", token)
+  
   const httpsheader= new HttpHeaders({
     
     'Accept': 'image/jpg'
