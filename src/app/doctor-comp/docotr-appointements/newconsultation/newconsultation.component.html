@@ -1,8 +1,30 @@
-<div class="con">
-    
-    
-    
-    
-    
-    
+
+
+  <div class="card con">
+    <div class="card-header">
+      <h4>Patient Information</h4>
     </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-center mb-3">
+        <div class="rounded-circle border border-dark" style="overflow:hidden; width:150px; height:150px;">
+          <img [src]="myImageUrl" alt="Patient Image" class="img-fluid" style="width:100%; height:auto;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-4">
+          <h5>Name: {{patient?.fullname}}</h5>
+          <p>Email: {{patient?.email}}</p>
+          <p>Phone Number: {{patient?.phone_number}}</p>
+        </div>
+      </div>
+      <hr>
+      <h5>Consultation Description</h5>
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group">
+          <textarea class="form-control" name="diagnostic" ngModel rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Consultation</button>
+      </form>
+    </div>
+  </div>
+  

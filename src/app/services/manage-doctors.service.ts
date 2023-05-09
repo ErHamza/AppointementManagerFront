@@ -33,7 +33,8 @@ addDoctor(doctor : Doctor , image:File){
     }
      });
   delete doctorObj.token;
-      console.log(doctorObj)
+  delete doctorObj.picture;
+      console.log("final doc",doctorObj)
       formData.append('file', image);
       formData.append('doctor', JSON.stringify(doctorObj));
        return this.http.post(this.server+"/api/v0/admin/doctors/register", formData)

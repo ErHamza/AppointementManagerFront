@@ -5,7 +5,7 @@ export class Patient extends User{
 
     constructor(
         user_id: number,
-        username: string,
+        fullname: string,
         password: string,
         email: string,
         phone_number: string,
@@ -16,7 +16,7 @@ export class Patient extends User{
     ){
         super(
             user_id,
-           username,
+           fullname,
            password,
            email,
            phone_number,

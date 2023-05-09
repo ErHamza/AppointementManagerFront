@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { exhaustMap, map, Observable, take } from 'rxjs';
+import { Consultaion } from '../models/consultaion.model';
 import { Doctor } from '../models/doctor.model';
 import { Patient } from '../models/patient.model';
 import { Rdv } from '../models/rdv.model';
@@ -44,11 +45,13 @@ export class DoctorsService {
 
   postponeRdvByDoctor(){}
   
-  addConsultation(rdv :Rdv, diagnostic : string){
+  addConsultation( diagnostic : string , rdv :Rdv){
     const formData = new FormData();
     formData.append('rdv_id', rdv.rdv_id.toString());
     formData.append('diagnostic', diagnostic)
-    return this.http.post(this.server + '/api/v0/consultation/add', formData)
+    
+    // const req= {diagnostic : diagnostic , rdv_id : rdv.rdv_id}
+    return this.http.post(this.server + '/api/v0/consultations/add', formData)
   }
   
 
@@ -69,6 +72,7 @@ doctorsListBySpeciality(id : string){
   return this.http.get<Doctor[]>(this.server+"/api/v0/manage/doctors-list", {params}).pipe(
   map(res=>{
   // I use the map to fetch the picture of each user
+  
       res.forEach(user=>{
             this.getDoctorPicture(user.user_id!).subscribe((data:any)=>{
               
@@ -76,7 +80,8 @@ doctorsListBySpeciality(id : string){
                 reader.readAsDataURL(data);
                 reader.onloadend = () => {
                   const obj= reader.result as string;
-                  user.picture=obj }})
+                  user.picture=obj
+                 }})
       })
 
       return res
@@ -92,6 +97,25 @@ doctorAppoinentements(){
 doctorConsultations(){
   return this.http.get<Patient[]>(this.server+ '/api/v0/consultations/list')
 }
+
+
+
+getPatientImage(id : number):Observable<any>{
+  
+    const httpsheader= new HttpHeaders({
+      'Accept': 'image/jpg',
+    })
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
+    return this.http.get(this.server + "/api/v0/consultations/patient-image/"+id, {responseType:'blob',headers: httpsheader})
+  }
+
+
+
+
+getPatientDetails(patient :Patient){
+  return this.http.get<Patient>(this.server+ '/api/v0/consultations/patient/'+patient.user_id)
+}
+
 
   
 }

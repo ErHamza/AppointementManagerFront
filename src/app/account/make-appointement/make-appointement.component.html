@@ -1,7 +1,7 @@
 <br>
 <br>
 
-<h2 class="instruction">Please flow the steps to make your Appointement</h2>
+<h2 class="instruction">Please follow the steps to make your Appointement</h2>
 
 
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
@@ -28,7 +28,7 @@
         </mat-form-field> -->
         <button mat-raised-button color="blue" type="button" (click)="showDocs()">Chose Doctor</button>
         <app-doctors *ngIf="doctorsC" [speciality]="selectedSpec" (event)="onSend($event)"></app-doctors>
-        <p *ngIf="selectedDoctor"><i>Your doctor :</i>{{selectedDoctor.username}}</p>
+        <p *ngIf="selectedDoctor"><i>Your doctor :  </i>{{selectedDoctor.fullname}}</p>
           
           <div>
             <button mat-raised-button matStepperNext type="button" color="primary" style="margin-top:1em">Next</button>

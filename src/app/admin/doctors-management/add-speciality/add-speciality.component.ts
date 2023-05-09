@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
 
 @Component({
@@ -7,12 +9,14 @@ import { ManageDoctorsService } from 'src/app/services/manage-doctors.service';
   styleUrls: ['./add-speciality.component.css']
 })
 export class AddSpecialityComponent implements OnInit {
+  @ViewChild("data") form? : NgForm
 
   constructor(private manageDoctors : ManageDoctorsService) { }
 
   addSpeciality(data : any){
     this.manageDoctors.addSpeciality({speciality_name: data.name}).subscribe(res=>{
-      console.log(res)
+      this.form?.reset()
+      
     })
   }
 

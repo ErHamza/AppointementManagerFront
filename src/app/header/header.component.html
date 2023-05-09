@@ -1,65 +1,62 @@
 
-<nav class="bg-light" >
-    <div class="header">
-        <img src="../assets/logo.png" alt="logo" width="120vh" class="logo" (click)="go_to_home()">
+<nav class="bg-light"  >
 
-        
+    <div class="header">
+
+        <img src="../assets/logo.png" alt="logo" width="140vh" class="logo" (click)="go_to_home()">
 
         <ul  *ngIf="!isMobile$ || isLaptop$">
             <li routerLink="home">
-                
                 Main
             </li>
 
-            <li [routerLink]="user?.role === 'PATIENT' ? '/account' : (user?.role === 'ADMIN' ? '/admin' : '/doctor')" *ngIf="user?.username">
-
-            
-
-                
+            <li [routerLink]="user?.role === 'PATIENT' ? '/account' : (user?.role === 'ADMIN' ? '/admin' : '/doctor')" *ngIf="user?.email">
                 Account
             </li>
-
-            <li routerLink="doctors-list" *ngIf="user?.username" >
+            <li routerLink="doctors-list" *ngIf="user?.email" >
                 
                 Doctors
             </li>
-            <li *ngIf="user?.username == undefined" routerLink="signup" (click)="!sideBar" >
+            <li *ngIf="user?.email == undefined" routerLink="signup" (click)="!sideBar" >
                 sign Up
                 
             </li>
             
-            
-            <li routerLink="signin" *ngIf="user?.username == undefined">
+            <li routerLink="signin" *ngIf="user?.email == undefined || user?.email == null && !isMobile$ ">
+                
                 sign In
             </li>
 
             <li routerLink="#">About</li>
-
-           
-     
     
         </ul>
 
-        <span *ngIf="user?.username && !isMobile$ " class="logout"  >
-            <span >
-            <b style="color: green; margin-right:.7em ;" >{{user?.username}}</b></span>
-    
-            <a (click)="logout()" style="color: red;">Logout <fa-icon [icon]="poweroff"></fa-icon>
+       
+        <span *ngIf="user?.email && !isMobile$ " class="logout"  >
+        
+            <b  class="ml-1 name" >{{user?.fullname}}</b>
+            <img class="display-picture m-3" [src]="userPicture">
+            <span dir="rtl">
+                <fa-icon  [icon]="faCaretDown"  [matMenuTriggerFor]="menu"></fa-icon>
+                <mat-menu #menu = "matMenu" class="ml-1"  >
+                    <button mat-menu-item  style="color: red;" (click)="logout()">Logout <fa-icon  [icon]="poweroff"></fa-icon></button>
+                </mat-menu>    
                 
-            </a>
+            
+            
+                
+
+            </span>
+           
             
         </span>
-
-
-        <fa-icon [icon]="faBars" (click)="show()" class="sideBar" 
+        <fa-icon [icon]="faBars" (click)="show()" class="faCaretDown" 
         *ngIf="isMobile$ || !isLaptop$"></fa-icon>
         
-        
-        
-    
-    </div>    
-    
+    </div>
+   
     
 
 </nav>
+
 

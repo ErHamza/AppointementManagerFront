@@ -22,25 +22,9 @@ export class SigninComponent implements OnInit, OnDestroy {
 login(data:LoginForm){
   console.log(data)
   
-  this.authService.login(data).pipe(take(1)).subscribe(res=>{
-    if(res){
-      // const user  = this.authService.UserData.pipe(take(1)).subscribe(val=>{
-      //   console.log("my user",val)
-      //   switch(val!.role){
-      //     case "PATIENT":
-      //       this.route.navigate(['account'])
-      //       break
-      //      case "ADMIN": 
-      //      this.route.navigate(['admin'])
-      //      break;
-      //      case "DOCTOR":
-      //       this.route.navigate(['home'])
-      
-      //   }
-      // })
-  
-      
-    }
+  this.authService.login(data).pipe().subscribe(()=>{}, error=>{
+
+      alert("Incorrect Credential")
 
     
   })

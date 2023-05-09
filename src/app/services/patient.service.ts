@@ -25,4 +25,5 @@ export class PatientService {
   getMyAppointementList(){
     return this.http.get<Rdv[]>(this.server + "/api/v0/rdv/list")
   }
+
 }

@@ -1,6 +1,7 @@
-.admin-box{
+.user-box{
     border: 1px rgba(119, 136, 153, 0.371) solid;
     padding: 1em;
+    height: 70vh;
 }
 .buttons{
     margin-top: 1.7em;

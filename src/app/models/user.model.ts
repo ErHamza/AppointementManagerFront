@@ -9,7 +9,7 @@ export class User{
 
     constructor(
         private _user_id: number | null ,
-        private _username: string | null,
+        private _fullname: string | null,
         private _password: string | null,
         private _email: string | null,
         private _phone_number: string | null,
@@ -39,11 +39,11 @@ export class User{
     }
 
     
-    public get username(): string| null {
-        return this._username;
+    public get fullname(): string| null {
+        return this._fullname;
     }
-    public set username(value: string | null) {
-        this._username = value;
+    public set fullname(value: string | null) {
+        this._fullname = value;
     }
 
     

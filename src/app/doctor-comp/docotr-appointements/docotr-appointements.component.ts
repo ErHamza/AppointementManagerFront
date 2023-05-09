@@ -14,7 +14,8 @@ export class DocotrAppointementsComponent implements OnInit {
   dataSource! : MatTableDataSource<Rdv>;
   appointementList :Array<Rdv> =[]
   displayedColumns: string[] = ['Appointement Id', 'Date', 'Patient', 'Action'];
-  consultationWindow=true;
+  consultationWindow=false;
+  selectedRdv? : Rdv;
 
 
   constructor(private _doctorService : DoctorsService) { }
@@ -22,11 +23,12 @@ export class DocotrAppointementsComponent implements OnInit {
   getDoctorAppointements(){
     this._doctorService.doctorAppoinentements().subscribe(res=>{
       this.appointementList = res;
+      console.log(res)
       
       // this.appointementList.forEach(element=>{
       //   element.date_rdv = new Date(element.date_rdv)
       // })
-      console.log("Resss",this.appointementList)
+      
       this.dataSource = new MatTableDataSource(this.appointementList);
     }
     )
@@ -36,8 +38,10 @@ export class DocotrAppointementsComponent implements OnInit {
     this.getDoctorAppointements()
   }
 
-addConsultation(){
+addConsultation(appointement :Rdv){
+
   this.consultationWindow=!this.consultationWindow
+  this.selectedRdv = appointement;
   
 }
 

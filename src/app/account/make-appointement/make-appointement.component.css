@@ -1,5 +1,7 @@
 .instruction{
     text-align: center;
+    color: blue;
+    font-family: 'Roboto';
 }
 
 .step1-style{

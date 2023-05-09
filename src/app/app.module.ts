@@ -56,6 +56,7 @@ import { NewconsultationComponent } from './doctor-comp/docotr-appointements/new
 
 
 
+
 @NgModule({
   declarations: [
     

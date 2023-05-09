@@ -26,22 +26,13 @@ selectedFiles! : FileList;
     );
   }
 
-  // if(this.selectedFiles ){
-  //   const file: File | null = this.selectedFiles.item(0);
-    
-  //   if(file)
-  //   {
-  //     this.currentFile=file;
-  //     this.auth.signup(data , this.currentFile).subscribe(res=>{
-  //       console.log(res) 
 
-  //     })
   onSubmit(){
     if(this.selectedFiles){
       
       const form = this.doctorForm.value;
       const selectedSpeciality = this.specialities.find(s => s.speciality_name === form.speciality);
-      console.log("this is my form ",form)
+      
         const file: File | null = this.selectedFiles.item(0);
       
       
@@ -55,11 +46,16 @@ selectedFiles! : FileList;
         file?.name || '',
         ''
       );
-      console.log(file)
+      console.log("doc",doctor)
       
       if(file){
         console.log(file)
-        this.manageDocors.addDoctor(doctor, file).subscribe()
+        this.manageDocors.addDoctor(doctor, file).subscribe(res=>{
+          this.doctorForm.reset()
+
+        } , error=>{
+          console.error(error)
+        })
       }
      
     }

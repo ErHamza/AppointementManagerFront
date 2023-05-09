@@ -18,6 +18,7 @@ export class MyPatientsComponent implements OnInit {
 getPatients(){
   this._doctorService.doctorConsultations().subscribe(res=>{
     this.PATIENTS = res
+    console.log(res)
     this.dataSource = new MatTableDataSource(this.PATIENTS);
   })
 }

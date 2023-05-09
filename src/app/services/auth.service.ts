@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, from, map, Observable, of, tap, throwError } from 'rxjs';
 import { User } from '../models/user.model';
 import jwt_decode from 'jwt-decode';
 import { LoginForm } from '../models/loginForm.model';
@@ -18,6 +18,7 @@ export class AuthService {
    constructor(private http: HttpClient, private route : Router) { }
 
 signup(patient: Patient, image :any ){
+  console.log(patient)
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'multipart/form-data'
@@ -43,14 +44,16 @@ login(data: LoginForm)
       
       
       
-        return this.http.post<  {token : string}>(this.server+'/auth/login',
+        return this.http.post<any>(this.server+'/auth/login',
          data
-                  ).pipe(tap(response=>{
-                      
-                                       
+                  ).pipe(
                     
-                    this.HandaleAuth(response.token)              
-                    
+                    map(response=>{ 
+                    this.HandaleAuth(response.token)
+                         }),
+                  catchError((error : HttpErrorResponse)=>{
+                    console.log(error)
+                    return throwError(error)
                   }))
     }
   
@@ -136,18 +139,13 @@ return this.http.post(this.server + '/auth/image',fromData)
 
 
 getUserPicture():Observable<any>{
- 
-  const token = this.UserData.value?.token;
-  
   const httpsheader= new HttpHeaders({
-    
-    'Accept': 'image/jpg'
-    
-
+    'Accept': 'image/jpg',
   })
   // const headers = new HttpHeaders({ 'Content-Type': 'application/octet-stream' });
-  return this.http.get(this.server + "/auth/user-image", {responseType:'blob',headers: httpsheader})
+  return this.http.get(this.server + "/api/v0/manage/user-picture", { responseType: 'blob', headers: httpsheader})
 }
+
 
 
 

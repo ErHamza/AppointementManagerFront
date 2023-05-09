@@ -1,5 +1,8 @@
 
-<app-newconsultation class="consultation" *ngIf="consultationWindow"></app-newconsultation>
+<app-newconsultation class="consultation" 
+[rdv]="selectedRdv" *ngIf="consultationWindow"
+(created)="consultationWindow = false"
+></app-newconsultation>
 
 <div class="rdvist" (click)="consultationWindow =  false">
   <mat-form-field>
@@ -36,7 +39,7 @@
           <fa-icon id="icon" [icon]="faGear"></fa-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="addConsultation()">Add Consultation</button>
+          <button mat-menu-item (click)="addConsultation(element)">Add Consultation</button>
           <button mat-menu-item (click)="showUserDetails()">Patient details</button>
         </mat-menu>
       </td>

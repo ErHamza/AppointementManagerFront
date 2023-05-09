@@ -1,12 +1,14 @@
-import { Component, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { faBars , faCaretDown, faCaretUp  } from '@fortawesome/free-solid-svg-icons';
 import { Breakpoints } from '@angular/cdk/layout'; 
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommunService } from '../services/commun.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import {Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff , faArrowDown} from '@fortawesome/free-solid-svg-icons';
 import { User } from '../models/user.model';
+import { take } from 'rxjs';
+
 
 
 
@@ -18,17 +20,20 @@ import { User } from '../models/user.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit , OnChanges{
-  user? : User | null;
+export class HeaderComponent implements OnInit , OnChanges , OnDestroy{
   
+  user? : User | null;
+  OptionsButton=false;
   isMobile$?: boolean;
   isLaptop$?: boolean;
-
-
   faBars=faBars;
+  faCaretDown=faCaretDown;
   poweroff=faPowerOff;
-  
+  faArrowDown= faArrowDown;
+  faCaretUp=faCaretUp;
   sideBar:boolean=false;
+  userPicture?:string;
+  
 
   show(){
     this.sideBar=!this.sideBar
@@ -40,11 +45,28 @@ export class HeaderComponent implements OnInit , OnChanges{
 
   }
 
+
+loadUserPicture() {
+  this.auth.getUserPicture().pipe(take(1)).subscribe(res=> {
+    const reader = new FileReader();
+    reader.readAsDataURL(res);
+    reader.onloadend = () => {
+      const obj= reader.result as string;
+      this.userPicture=obj
+      
+                            }
+                          })
+                        
+                        }
+
+
   
   constructor(private responsive: BreakpointObserver, private commun: CommunService
     ,private router : Router, private auth : AuthService) { }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.testScreen()
+    
   }
 
   
@@ -60,7 +82,9 @@ testScreen(){
       }
     }
   );
-  this.responsive.observe([ Breakpoints.Small] ).subscribe(res=>{
+
+// to make the screen responsive 
+this.responsive.observe([ Breakpoints.Small] ).subscribe(res=>{
     if(res.matches){
       this.isLaptop$= false;
       
@@ -71,23 +95,41 @@ testScreen(){
 
 }
 
-  ngOnInit(): void {
-this.testScreen()
-this.auth.UserData.subscribe(myuser=>{
-  this.user=myuser
 
- })
+
+loadUser(){
+  this.auth.UserData.subscribe(myuser=>{
+    this.user = myuser
+    
+    
+    if(myuser?.email)
+    this.loadUserPicture()
+    })
+}
+ngOnInit(): void {
+  this.testScreen()
+  this.loadUser()
+  
+ 
  
   
 }
 
   logout(){
     this.auth.logout()
-    this.router.navigate([''])
+    this.router.navigate(['signin'])
   }
 
     
     
+
+
+  ngOnDestroy(): void {
+  //  this.userPicture= "";
+  }
+
+
+
   }
 
 
