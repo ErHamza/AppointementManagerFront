@@ -1,16 +1,45 @@
 <div class="admin-container">
-
-
-
-
         <div class="sidebar">
 
             <ul class="sidebar-list">
-                <li routerLink="appointements">Appointements</li>
-                <li routerLink="patients">Patients</li>
-                <li routerLink="doctors">Doctors</li>
+                <li >
+                    <button mat-button  routerLink="#">Statistics</button>
+               </li>
+
+                <li>
+
+                    <button mat-button 
+                    (click)="patientMenu = !patientMenu">
+                   
+                    <span>Patients</span> <fa-icon [icon]=" patientMenu? faCaretUp : faCaretDown"></fa-icon> 
+                    </button>
+                    <ul *ngIf="patientMenu" class="options-style ">           
+                    <button mat-button routerLink="patients/patients-list" >patients-list</button>
+                    <hr>
+                    
+                        </ul>
+                        </li>
+               
+                <li> 
+                    
+                <button mat-button (click)="doctorMenu= ! doctorMenu" > 
+                    Doctors <fa-icon [icon]=" doctorMenu? faCaretUp : faCaretDown"></fa-icon></button> 
+                    <div *ngIf="doctorMenu" class="options-wrapper">  
+                        <ul class="options-style">
+                            <button mat-button  routerLink="doctors/doctors-list">Doctors List</button>
+                            <button mat-button  routerLink="doctors/add-doctor">Add doctor</button>
+                            <button mat-button  routerLink="doctors/add-speciality">Add speciality</button>  
+                            <hr>
+                        </ul>       
+                    
+                    </div>
+
+                </li>
                 
-                <li>Statistics</li>
+                <li>
+                    <button mat-button  routerLink="#">Appointements</button>
+
+                </li>
                 
                 
             </ul>

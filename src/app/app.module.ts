@@ -43,7 +43,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MakeAppointementComponent } from './account/make-appointement/make-appointement.component';
 import { DoctorsComponent } from './account/make-appointement/doctors/doctors.component';
 import { MyAppointementsComponent } from './account/my-appointements/my-appointements.component';
-
+import {MatTree, MatTreeModule} from '@angular/material/tree'; 
 import { DoctorCompComponent } from './doctor-comp/doctor-comp.component';
 import { MyPatientsComponent } from './doctor-comp/my-patients/my-patients.component';
 import { DocotrAppointementsComponent } from './doctor-comp/docotr-appointements/docotr-appointements.component';
@@ -121,6 +121,7 @@ import { NewconsultationComponent } from './doctor-comp/docotr-appointements/new
      MatDatepickerModule,
      MatNativeDateModule,
      MatMenuModule
+     , MatTreeModule
     
   ],
   providers: [

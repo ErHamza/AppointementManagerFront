@@ -57,10 +57,10 @@ li{
     font-style: normal;
     text-decoration: none;
     cursor: pointer;
-    color:rgb(45, 35, 32);
+    color:#757575;
     font-weight: 350;
     font-family: Times New Roman;
-    color: blueviolet;
+    
     border-right: 1px solid rgb(168, 157, 157);
   padding: 1em;
   line-height: .4px;

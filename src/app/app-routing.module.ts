@@ -37,6 +37,7 @@ const routes: Routes = [
       {path:'add-speciality', component:AddSpecialityComponent}
     ]},
     {path: 'patients' , component: PatientsComponent, children:[
+      {path: '', redirectTo: 'patients-list', pathMatch: 'full'},
       {path:'patients-list', component:PatientsListComponent}
     ]},
     {path: 'appointements' , component: AppointementsComponent}
