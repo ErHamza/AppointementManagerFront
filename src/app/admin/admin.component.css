@@ -42,7 +42,7 @@ li{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 0.9rem;  
+    
     
     background-color: #3B4659;
 }
@@ -56,7 +56,7 @@ li{
 button{
     color: #AEB4BF;
     width: 100%;
-    font-size: 1.2em;
+    font-size: 1rem;  
     padding: 0.75em 0;
     
 
